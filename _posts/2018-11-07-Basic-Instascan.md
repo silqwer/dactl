@@ -3,7 +3,7 @@ layout: post
 title:  "Basic Instascan"
 tags:
   - instascan
-hero: /../assets/resources/img/ar/arCntentsPreview.png
+hero: /../assets/resources/img/instascan/setup.jpg
 overlay: red
 published: true
 

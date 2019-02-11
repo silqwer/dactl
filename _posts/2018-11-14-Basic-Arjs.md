@@ -3,7 +3,7 @@ layout: post
 title:  "Arjs Basic"
 tags:
   - Ar.js
-hero: /../assets/resources/img/ar/arCntentsPreview.png
+hero: /../assets/resources/img/arjs/arjs.png
 overlay: purple
 published: true
 
