@@ -3,7 +3,6 @@ layout: post
 title:  "Swipe event test"
 tags:
   - svg
-  - event
   - test
 hero: /../assets/resources/img/test/background.png
 overlay: orange

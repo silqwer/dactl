@@ -2,7 +2,7 @@
 layout: post
 title:  "Passville"
 tags:
-  - Portfolio
+  - portfolio
 hero: /../assets/resources/img/pass/img4.png
 overlay: orange
 published: true

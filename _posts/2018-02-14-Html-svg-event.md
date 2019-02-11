@@ -3,7 +3,6 @@ layout: post
 title:  "Html svg evnet test"
 tags:
   - svg
-  - event
   - test
 hero: /../assets/resources/img/test/background.png
 overlay: red

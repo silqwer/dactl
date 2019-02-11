@@ -2,7 +2,7 @@
 layout: post
 title:  "Grid Plane"
 tags:
-  - Threejs
+  - threejs
 hero: /../assets/resources/lib/threejs/screenshot/gridPlane.png
 overlay: red
 published: true
