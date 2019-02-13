@@ -105,6 +105,7 @@ function initialize(){
 	//0 근처의 매개 변수 lerp 값이 느림, 1 근처가 빠름 (순간)
 	let smoothedRoot = new THREE.Group();
 	scene.add(smoothedRoot);
+	                   
 	smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
 		lerpPosition: 0.8,
 		lerpQuaternion: 0.8,
@@ -129,7 +130,7 @@ function update(){
 		arToolkitContext.update(arToolkitSource.domElement);
 	}
 	
-	smoodthedControls.update(markerRoot1);
+	smoothedControls.update(markerRoot1);
 }
 
 function render(){
