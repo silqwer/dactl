@@ -72,6 +72,14 @@ function initialize(){
 		}
 	}
 	
+	function onResize(){
+		arToolkitSource.onResize();
+		arToolkitSource.copySizeTo(renderer.domElement);
+		if(arToolkitContext.arController !== null){
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+		}
+	}
+	
 	arToolkitSource.init(function onReady(){
 		onResize();
 	});
@@ -81,7 +89,7 @@ function initialize(){
 	});
 	
 	// arToolkitContext 생성
-	arToolkitContext = new THREEx.ArToolkitcontext({
+	arToolkitContext = new THREEx.ArToolkitContext({
 		cameraParameterUrl: 'data/camera_para.dat',
 		detectionMode: 'mono'
 	});
