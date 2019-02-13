@@ -3,7 +3,7 @@ layout: post
 title:  "Smoothed Controls"
 tags:
   - Ar.js
-hero: /../assets/resources/img/arjs/custom-patterns.png
+hero: /../assets/resources/img/arjs/hello-cube.png
 overlay: green
 published: true
 
