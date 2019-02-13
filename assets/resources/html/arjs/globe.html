@@ -103,7 +103,7 @@ function initialize(){
 	
 	let geometry1 = new THREE.SphereGeometry(1, 50, 50);
 	let loader = new THREE.TextureLoader();
-	let material1 = new THREE.MeshLambertMaterial({map: textre, opacity: 0.5});
+	let material1 = new THREE.MeshLambertMaterial({map: texture, opacity: 0.5});
 	
 	mesh1 = new THREE.Mesh(geometry1, material1);
 	mesh1.position.y = 1;
