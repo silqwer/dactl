@@ -100,8 +100,8 @@ function initialize(){
 		type: 'pattern',
 		patternUrl: 'data/hiro.patt'
 	});
-	
-	let geomatry1 = new THREE.PlaneBufferGeomatry(1, 1, 4, 4);
+	                        
+	let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
 	let loader = new THREE.TextuerLoader();
 	let texture = loader.load('images/earth.jpg', render);
 	let material1 = new THREE.MeshBasicMaterial({map: texture});
