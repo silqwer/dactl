@@ -3,7 +3,7 @@ layout: post
 title:  "Hello Cube"
 tags:
   - Ar.js
-hero: /../assets/resources/img/arjs/arjs.png
+hero: /../assets/resources/img/arjs/hello-cube.png
 overlay: red
 published: true
 
