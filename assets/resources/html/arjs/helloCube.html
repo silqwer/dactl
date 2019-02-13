@@ -20,6 +20,119 @@
 	
 </head>
 <body style='margin : 0px; overflow: hidden; font-family: monospace;'>
-리소스 불러오는거 확인
+<script type="text/javascript">
+var scene, camera, renderer, clock, deltaTime, totalTime;
+
+var  arToolkitSource, arToolkitContext;
+
+var markerRoot1, markerRoot2;
+
+var mesh1;
+
+initialize(); 
+animate();
+
+function initialize(){
+	scene = new THREE.Scene();	// 씬 생성 
+	
+	// 조명 생성
+	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+	scene.add(ambientLight);
+	
+	// 카메라 생성
+	camera = new THREE.Camera();
+	scene.add(camera);
+	
+	// 랜더러 생성
+	renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+	// 랜더러 설정 및 도큐먼트에 추가 
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0);
+	renderer.setSize(640, 480);
+	renderer.domElement.style.position = 'absolute';
+	renderer.domElement.style.top = '0px;';
+	renderer.domElement.style.left = '0px;';
+	document.body.appendChild(renderer.domElement);
+	
+	// 클락 생성 및 타임 설정 
+	clock = new THREE.Clock();
+	deltaTime = 0; 
+	totalTime = 0; 
+	
+	// ArToolkitSouce 설정
+	arToolkitSource = new THREEx.ArToolkitSource({
+		sourceType: 'webcam'
+	});
+	
+	function onResize(){
+		arToolkitSource.onResize();
+		arToolkitSource.copySizeTo(renderer.domElement);
+		if(arToolkitContext.arController !== null){
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+		}
+	}
+	
+	arToolkitSource.init(function onReady(){
+		onResize();
+	});
+	
+	window.addEventListener('resize', function(){
+		onResize();
+	});
+	
+	// ArToolkitContext 세팅
+	
+	// ArToolkitContext 생성 
+	arToolkitContext = new THREEx.ArToolkitContext({
+		cameraParametersUrl: 'data/camera_para.dat',
+		detectionMode: 'mono'
+	});
+	
+	arToolkitContext.init(function onCompleted(){
+		camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+	});
+	
+	// MarkerRoots 세팅 
+	markerRoot1 = new THREE.Group();
+	scene.add(markerRoot1);
+	
+	let markerControls1 = new TRHEEx.ArMarkerControls(arToolkitContext, markerRoot1, {
+		type: 'pattern',
+		patternUrl: 'data/hiro.patt'
+	});
+	
+	let geometry1 = new THREE.CubeGeometry(1,1,1);
+	let material1 = new THREE.MeshNormalMaterial({
+		transparent: true,
+		opacity: 0.5,
+		side: THREE.DoubleSide
+	});
+	
+	mesh1 = new THREE.Mesh(geometry1, material1);
+	mesh1.position.y = 0.5;
+	markerRoot1.add(mesh1);
+}
+
+function update(){
+	//update artoolkit on every frame
+	if(arToolkitSource.ready !== false){
+		arToolkitContext.update(arToolkitSource.domElement);
+	}
+}
+
+function render(){
+	renderer.render(scene, camera);
+}
+
+function animate(){
+	requestAnimationFrame(animate);
+	deltaTime = clock.getDelta();
+	totalTime += deltaTime;
+	update();
+	render();
+}
+</script>
 </body>
 </html>
