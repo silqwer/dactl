@@ -3,10 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<title>globe</title>
+	<title>Model</title>
 	
 	<!-- include three.js -->
 	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
+	<script type="text/javascript" src="../../lib/threejs/js/loaders/OBJLoader.js"></script>
+	<script type="text/javascript" src="../../lib/threejs/js/loaders/MTLLoader.js"></script>
+	
 	
 	<!-- inclde jsartookit -->
 	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.min.js"></script>
@@ -101,38 +104,39 @@ function initialize(){
 		patternUrl: 'data/hiro.patt'
 	});
 	
-	let geometry1 = new THREE.SphereGeometry(1, 32, 32);
+	let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
 	let loader = new THREE.TextureLoader();
-	let texture = loader.load('images/earth-sphere.jpg', render);
-	let material1 = new THREE.MeshLambertMaterial({map: texture, opacity: 0.5});
-	
+	let material1 = new THREE.MeshBasicMaterial({color: 0x0000ff, opacity: 0.5});
 	mesh1 = new THREE.Mesh(geometry1, material1);
-	mesh1.position.y = 1;
-	
+	mesh1.rotation.x = -Math.PI/2;
 	markerRoot1.add(mesh1);
 	
-	// 포인트 라이트
-	let pointLight = new THREE.PointLight(0xffffff, 1, 100);
-	pointLight.position.set(0.5, 3, 2);
+	function onProgress(xhr){
+		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+	}
 	
-	// 빛의 위치를 ​​시각화하는 데 도움이되는 메시 생성
-	pointLight.add(
-		new THREE.Mesh(
-			new THREE.SphereBufferGeometry(0.05, 16, 8),
-			new THREE.MeshBasicMaterial({color: 0xffffff, opacity: 0.5})
-		)		
-	);
+	function onError(xhr){
+		console.log('An error happend');
+	}
 	
-	markerRoot1.add(pointLight);
-	
+	new THREE.MTLLoader()
+			.setPath('models/')
+			.load('fish-2.mtl', function(materials){
+				materials.preload();
+				new THREE.OBJLoader()
+						.setMaterials(materials)
+						.setPath('models/')
+						.load('fish-2.obj', function(group){
+							mesh0 = group.children[0];
+							mesh0.material.side = THREE.DoubleSide;
+							mesh0.position.y = 0.25;
+							mesh0.scale.set(0.25, 0.25, 0.25);
+							markerRoot1.add(mesh0);
+						}, onProgress, onError);
+			});
 }
 
 function update(){
-	
-	if(markerRoot1.visible){
-		mesh1.rotation.y += 0.01;
-	}
-	
 	if(arToolkitSource.ready !== false){
 		arToolkitContext.update(arToolkitSource.domElement);
 	}
