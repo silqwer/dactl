@@ -112,9 +112,9 @@ function initialize(){
 	let geometry1 = new THREE.PlaneBufferGeometry(2, 2, 4, 4);
 	let video = document.getElementById('video');
 	let texture = new THREE.VideoTexture(video);
-	textrue.minFilter = THREE.LinearFilter;
-	textrue.magFilter = THREE.LinearFilter;
-	textrue.format = THREE.RGBFormat;
+	texture.minFilter = THREE.LinearFilter;
+	texture.magFilter = THREE.LinearFilter;
+	texture.format = THREE.RGBFormat;
 	
 	let material1 = new THREE.MeshBasicMaterial({map: texture});
 	
