@@ -38,7 +38,7 @@ uniform sampler2D baseTexture;
 varying vec2 textureUV;
 void main(){
 	float amt = abs(sin(time));
-	vec4 tintColor = texture2D(baseTextureUV) * vec4(amt, amt, 1, 1);
+	vec4 tintColor = texture2D(baseTexture, textureUV) * vec4(amt, amt, 1, 1);
 	gl_FlagColor = tintColor;
 }
 </script>
