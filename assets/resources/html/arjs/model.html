@@ -118,9 +118,7 @@ function initialize(){
 	function onError(xhr){
 		console.log('An error happend');
 	}
-	
-	console.log(new THREE.MTLLoader());
-	
+
 	new THREE.MTLLoader()
 		.setPath( 'models/' )
 		.load( 'fish-2.mtl', function ( materials ) {
