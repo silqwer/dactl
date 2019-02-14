@@ -39,7 +39,7 @@ varying vec2 textureUV;
 void main(){
 	float amt = abs(sin(time));
 	vec4 tintColor = texture2D(baseTexture, textureUV) * vec4(amt, amt, 1, 1);
-	gl_FlagColor = tintColor;
+	gl_FragColor = tintColor;
 }
 </script>
 
@@ -134,7 +134,7 @@ function initialize(){
 			time: {value: 1.0},
 			baseTexture: {value: texture}
 		},
-		vertexShader : document.getElementById('vertexShader').textContent,
+		vertexShader: document.getElementById('vertexShader').textContent,
 		fragmentShader: document.getElementById('fragmentShader').textContent
 	});
 	
