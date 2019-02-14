@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Globe"
+title:  "Video Texture"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/video.png
