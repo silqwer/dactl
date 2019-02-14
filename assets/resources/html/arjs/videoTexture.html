@@ -109,19 +109,18 @@ function initialize(){
 	});
 	
 	// 변경 되는 부분
-	let geometry1 = new THREE.PlaneBufferGeometry(2, 2, 4, 4);
-	let video = document.getElementById('video');
-	let texture = new THREE.VideoTexture(video);
+	let geometry1 = new THREE.PlaneBufferGeometry(2,2, 4,4);
+	let video = document.getElementById( 'video' );
+	let texture = new THREE.VideoTexture( video );
 	texture.minFilter = THREE.LinearFilter;
 	texture.magFilter = THREE.LinearFilter;
 	texture.format = THREE.RGBFormat;
+	let material1 = new THREE.MeshBasicMaterial( { map: texture } );
 	
-	let material1 = new THREE.MeshBasicMaterial({map: texture});
-	
-	mesh1 = new THREE.Mesh(geometry1, material1);
+	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.rotation.x = -Math.PI/2;
 	
-	markerRoot1.add(mesh1);
+	markerRoot1.add( mesh1 );
 }
 
 function update(){
