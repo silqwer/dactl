@@ -184,7 +184,42 @@ function update(){
 }
 
 function render(){
+	//renderer.render(scene, camera);
+	let gl = renerer.context;
+	
+	renderer.clear(true, true, true);
+	renderer.autoClear = false;
+	
+	gl.enable(gl.STENCIL_TEST);
+	
+	camera.layers.set(1);
+	
+	gl.stencilFunc(gl.ALWAYS, 1, 0xff);
+	gl.stencilOp(gl.KEEP, gl.KEEP, gl.REPLACE);
+	gl.stencilMask(0xff);
+	
+	gl.colorMask(false, false, false, false);
+	gl.depthMask(false);
+	
+	renderer.render(scene,  camera);
+	
+	gl.colorMask(true, true, true, true);
+	gl.depthMask(true);
+	
+	gl.stencilFunc(gl.EQUAL, 1, 0xff);
+	gl.stencilOp(gl.KEEP, gl.KEEP, gl.KEEP);
+	
+	camera.layers.set(2);
 	renderer.render(scene, camera);
+	
+	gl.stencilFunc(gl.NOTEQUAL, 1, 0xff);
+	gl.colorMask(true, true, true, true);
+	gl.depthMask(true);
+	
+	camera.layers.set(0);
+	renderer.render(scene,  camera);
+	renderer.autoClear = true;
+	
 }
 
 function animate(){
