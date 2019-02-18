@@ -3,7 +3,7 @@ layout: post
 title:  "Masic Cube Effect"
 tags:
   - Ar.js
-hero: /../assets/resources/img/arjs/portal-view-AR.png
+hero: /../assets/resources/img/arjs/magic-cube.png
 overlay: green
 published: true
 
