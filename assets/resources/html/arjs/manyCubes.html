@@ -23,8 +23,8 @@
 <script type="text/javascript">
 var scene, camera, renderer, clock, deltaTime, totalTime;
 var arToolkitSource, arToolkitContext;
-var markerRoot1, markerRoot2;
-var mesh1;
+var patternArray, markerRootArray, markerGroupArray;
+var sceneGroup;
 
 initialize();
 animate();
@@ -91,36 +91,136 @@ function initialize(){
 	});
 	
 	// markerRoots 셋업
-	let loader = new THREE.TextureLoader();
-	let texture = loader.load('images/border.png');
-	let patternArray = ['letterA', 'letterB', 'letterC', 'letterD', 'letterF', 'kanji', 'hiro'];
-	let colorArray = [0xff0000, 0xff8800, 0xffff00, 0x00cc00, 0x0000ff, 0xcc00ff, 0xcccccc];
+	markerRootArray = [];
+	markerGroupArray = [];
+	patternArray = ['letterA', 'letterB', 'letterC', 'letterD', 'letterF', 'kanji'];
 	
-	for(let i=0; i<patternArray.length; ++i){
+	let rotationArray = [
+		new THREE.Vector3(-Math.PI/2, 0, 0), 
+		new THREE.Vector3(0, -Math.PI/2, Math.PI/2), 
+		new THREE.Vector3(Math.PI/2, 0, Math.PI), 
+		new THREE.Vector3(-Math.PI/2, Math.PI/2, 0), 
+		new THREE.Vector3(Math.PI, 0, 0), 
+		new THREE.Vector3(0, 0, 0)
+	];
+	
+	for(let i=0; i<6; i++){
 		let markerRoot = new THREE.Group();
+		markerRootArray.push(markerRoot);
 		scene.add(markerRoot);
 		let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
-			type: 'pattern', 
+			type: 'pattern',
 			patternUrl: 'data/' + patternArray[i] + '.patt'
 		});
 		
-		let mesh = new THREE.Mesh(
-				new THREE.CubeGeometry(1.25, 1.25, 1.25),
-				new THREE.MeshBasicMaterial({
-						color: colorArray[i],
-						map: texture,
-						transparent: true, 
-						opacity: 0.5
-					})
-				);
-		mesh.position.y = 1.25/2;
-		markerRoot.add(mesh);
+		let markerGroup = new THREE.Group();
+		markerGroupArray.push(markerGroup);
+		markerGroup.position.y = -1.25/2;
+		markerGroup.rotation.setFromVector3(rotationArray[i]);
+		
+		markerRoot.add(markerGroup);
 	}
+	
+	sceneGroup = new THREE.Group();
+	sceneGroup.scale.set(1.25/2, 1.25/2, 1.25/2);
+	
+	let loader = new THREE.TextureLoader();
+	
+	let tileTexture = loader.load('images/tiles.jpg');
+	
+	let geometry = new THREE.BoxGeometry(2, 2, 2);
+	let material = new THREE.MeshBasicMaterial({
+		map: tileTexture,
+		side: THREE.BackSide
+	});
+	met mesh = new THREE.Mesh(geometry, material);
+	sceneGroup.add(mesh);
+	
+	let sphereGeometry = new THREE.SphereGeometry(0.20, 6, 6);
+	let sphereCenters = [
+		new THREE.Vector3(-1, -1, -1),
+		new THREE.Vector3(-1, -1, 1),
+		new THREE.Vector3(-1, 1, -1),
+		new THREE.Vector3(-1, 1, 1),
+		new THREE.Vector3(1, -1, 1),
+		new THREE.Vector3(1, 1, -1),
+		new THREE.Vector3(1, 1, 1)
+	];
+	
+	let sphereColors = [ 0x444444, 0x0000ff, 0x00ff00, 0x00ffff, 0xff0000, 0xff00ff, 0xffff00, 0xffffff ];
+	
+	for(let i=0; i<8; i++){
+		let sphereMesh = new THREE.Mesh(
+			sphereGeometry,
+			new THREE.MeshLambertMaterial(
+				map: tileTexture,
+				color: sphereColors[i]
+			)
+		);
+		
+		sphereMesh.position.copy(sphereCenters[i]);
+		sceneGroup.add(sphereMesh);
+	}
+	
+	let edgeGeometry = new THREE.CylinderGeometry(0.05, 0.05, 2, 32);
+	let edgeRotations = [
+		new THREE.Vector3(0, 0, Math.PI/2),
+		new THREE.Vector3(0, 0, Math.PI/2),
+		new THREE.Vector3(0, 0, Math.PI/2),
+		new THREE.Vector3(0, 0, Math.PI/2),
+		
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		
+		new THREE.Vector3(Math.PI/2, 0, 0),
+		new THREE.Vector3(Math.PI/2, 0, 0),
+		new THREE.Vector3(Math.PI/2, 0, 0),
+		new THREE.Vector3(Math.PI/2, 0, 0)
+	];
+	
+	let edgeColors = [
+		0x880000, 0x880000, 0x880000, 0x880000,
+		0x008800, 0x008800, 0x008800, 0x008800,
+		0x000088, 0x000088, 0x000088, 0x000088
+	];
+	
+	for(let i=0; i<12; i++){
+		let edge = new THREE.Mesh(
+			edgeGeometry,
+			new THREE.MeshLambertMaterial({
+				map: tileTexture,
+				color: edgeColors[i]
+			});
+		);
+		edge.position.copy(degeCenters[i]);
+		dege.rotation.setFromVector3(edgeRotations[i]);
+		sceneGroup.add(dege);
+	}
+	
+	sceneGroup.add(
+		new THREE.Mesh(
+			new THREE.TorusKnotGeometory(0.5, 0.1),
+			new THREE.MeshNormalMaterial()
+		)		
+	);
+	
+	let pointLight = new THREE.PointLight(0xffffff, 1, 50);
+	pointLight.position.set(0.5, 3, 2);
+	scene.add(pointLight);
 }
 
 function update(){
 	if(arToolkitSource.ready !== false){
 		arToolkitContext.update(arToolkitSource.domElement);
+	}
+	
+	for(let i=0; i<6; i++){
+		if(markerRootArray[i].visible){
+			markerGoupArray[i].add(sceneGroup);
+			console.log('visible:'+patternArray[i]);
+		}
 	}
 }
 
