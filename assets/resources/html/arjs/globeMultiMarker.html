@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Hello Cube</title>
+	
+	<!-- include three.js -->
+	<script type="text/javascript" src="../../lib/threejs/build/keyboard.js"></script>
+	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
+	
+	<!-- inclde jsartookit -->
+	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.min.js"></script>
+	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.api.js"></script>
+	
+	<!-- include threex.artoolkit -->
+	<script type="text/javascript" src="../../lib/threex/threex-artoolkitsource.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-artoolkitcontext.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-arbasecontrols.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-armarkercontrols.js"></script>
+	
+</head>
+<body style='margin : 0px; overflow: hidden; font-family: monospace;'>
+<script type="text/javascript">
+var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
+
+var  arToolkitSource, arToolkitContext;
+
+var markerNames, markerArray, currentMarkerName;
+
+var sceneGroup;
+
+var globe;
+
+initialize(); 
+animate();
+
+function initialize(){
+	scene = new THREE.Scene();	// 씬 생성 
+	
+	// 조명 생성
+	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+	scene.add(ambientLight);
+	
+	// 카메라 생성
+	camera = new THREE.Camera();
+	scene.add(camera);
+	
+	// 랜더러 생성
+	renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+	
+	// 랜더러 설정 및 도큐먼트에 추가 
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0);
+	renderer.setSize(640, 480);
+	renderer.domElement.style.position = 'absolute';
+	renderer.domElement.style.top = '0px;';
+	renderer.domElement.style.left = '0px;';
+	document.body.appendChild(renderer.domElement);
+	
+	// 클락 생성 및 타임 설정 
+	clock = new THREE.Clock();
+	deltaTime = 0; 
+	totalTime = 0; 
+	
+	// ArToolkitSouce 설정
+	arToolkitSource = new THREEx.ArToolkitSource({
+		sourceType: 'webcam'
+	});
+	
+	function onResize(){
+		arToolkitSource.onResize();
+		arToolkitSource.copySizeTo(renderer.domElement);
+		if(arToolkitContext.arController !== null){
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+		}
+	}
+	
+	arToolkitSource.init(function onReady(){
+		onResize();
+	});
+	
+	window.addEventListener('resize', function(){
+		onResize();
+	});
+	
+	// ArToolkitContext 세팅
+	
+	// ArToolkitContext 생성 
+	arToolkitContext = new THREEx.ArToolkitContext({
+		cameraParametersUrl: 'data/camera_para.dat',
+		detectionMode: 'mono'
+	});
+	
+	arToolkitContext.init(function onCompleted(){
+		camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+	});
+	
+	// MarkerRoots 세팅 
+	markerNames = ['kanji', 'letterA', 'letterB'];
+	
+	markerArray = [];
+	
+	for(let i=0; i<markerNames.length; i++){
+		let marker = new THREE.Group();
+		scene.add(marker);
+		markerArray.push(marker);
+		
+		let markerControls = new THREEx.ArMarkerControls(arToolkitContext, marker, {
+			type: 'pattern', 
+			patternUrl: 'data/' + markerNames[i] + '.patt'
+		});
+		
+		let markerGroup = new THREE.Group();
+		marker.add(markerGroup);
+	}
+	
+	sceneGroup = new THREE.Group();
+	
+	let loader = new THREE.TextureLoader();
+	
+	let geometry1 = new THREE.SphereGeometry(1, 32, 32);
+	let texture = loader.load('images/earth-sphere.jpg');
+	let material1 = new THREE.MeshLambertMaterial({
+		map: texture,
+		opacity: 0.75
+	});
+	globe = new THREE.Mesh(geometry1, material1);
+	globe.position.y = 1;
+	sceneGroup.add(globe);
+	
+	markerArray[0].children[0].add(sceneGroup);
+	currentMarkerName = markerNames[0];
+	
+	let pointLight = new THREE.PointLight(0xffffff, 1, 50);
+	camera.add(pointLight);
+}
+
+function update(){
+	
+	keyboard.update();
+	
+	globe.rotation.y += 0.01;
+	
+	let anyMarkerVisible = false;
+	for(let i=0; i<markerArray.length; i++){
+		if(markerArray[i].visible){
+			anyMarkerVisible = true;
+			markerArray[i].children[0].add(sceneGroup);
+			if(currentMarkerName != markerNames[i]){
+				currentMarkerName = markerNames[i]
+			}
+			
+			let p = markerArray[i].children[0].getWorldPosition();
+			let q = markerArray[i].children[0].getWorldQuaternion();
+			let s = markerArray[i].children[0].getWorldScale();
+			let lerpAmount = 0.5;
+			
+			scene.add(sceneGroup);
+			sceneGroup.position.lerp(p, lerpAmount);
+			sceneGroup.quaternion.slerp(q, lerpAmount);
+			sceneGroup.scale.lerp(s, lerpAmount);
+			
+			break;
+		}
+	}
+	
+	if(!anyMarkerVisible){
+		console.log('No marker currently visible');
+	}
+	
+	let baseMarker = markerArray[0];
+	
+	for(let i=0; i<markerArray.length; i++){
+		let currentMarker = markerArray[i];
+		let currentGroup = currentMarker.children[0];
+		if(baseMarker.visible && currentMarker.visible){
+			let relativePosition = currentMarker.worldToLocal(baseMarker.position.clone());
+			currentGroup.position.copy(relativePosition);
+			
+			let relativeRotation = currentMarker.quaternion.clone().inverse().multiply(baseMarker.quaternion.clone());
+			currentGroup.quaternion.copy(relativeRotation);
+		}
+	}
+	
+	//update artoolkit on every frame
+	if(arToolkitSource.ready !== false){
+		arToolkitContext.update(arToolkitSource.domElement);
+	}
+}
+
+function render(){
+	renderer.render(scene, camera);
+}
+
+function animate(){
+	requestAnimationFrame(animate);
+	deltaTime = clock.getDelta();
+	totalTime += deltaTime;
+	update();
+	render();
+}
+</script>
+</body>
+</html>
