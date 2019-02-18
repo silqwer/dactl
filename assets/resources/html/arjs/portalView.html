@@ -163,7 +163,7 @@ function initialize(){
 	];
 	
 	let skyMesh = new THREE.Mesh(
-		new THREE.PlaneGeometry(30, 30, 30),
+		new THREE.CubeGeometry(30, 30, 30),
 		skyMaterialArray
 	);
 	
@@ -219,6 +219,7 @@ function render(){
 	
 	camera.layers.set(0);
 	renderer.render(scene,  camera);
+	
 	renderer.autoClear = true;
 	
 }
