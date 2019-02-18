@@ -4,7 +4,7 @@ title:  "Portal View AR"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/portal-view-ar.png
-overlay: blue
+overlay: green
 published: true
 
 ---
