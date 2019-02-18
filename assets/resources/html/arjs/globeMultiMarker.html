@@ -173,7 +173,7 @@ function update(){
 	
 	let baseMarker = markerArray[0];
 	
-	for(let i=0; i<markerArray.length; i++){
+	for(let i=1; i<markerArray.length; i++){
 		let currentMarker = markerArray[i];
 		let currentGroup = currentMarker.children[0];
 		if(baseMarker.visible && currentMarker.visible){
