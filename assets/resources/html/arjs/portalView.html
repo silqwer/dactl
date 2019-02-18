@@ -142,10 +142,10 @@ function initialize(){
 		opacity: 0.75
 	});
 	
-	let geometry1 = new THREE.PlaneGeometry({
-		portalWidth + 2 * portalBorder,
-		portalHeight + 2 * portalBorder
-	});
+	let geometry1 = new THREE.PlaneGeometry(
+		portalWidth + 2*portalBorder,
+		portalHeight + 2*portalBorder
+	);
 	
 	let portalBorderMesh = new THREE.Mesh(geometry1, portalMaterial);
 	portalBorderMesh.position.y = portal.position.y;
