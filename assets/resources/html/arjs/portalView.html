@@ -132,6 +132,7 @@ function initialize(){
 	portal = new THREE.Mesh(geometry, defaultMaterial);
 	portal.position.y = portalHeight/2 + portalBorder;
 	portal.layers.set(1);
+	smoothedRoot.add(portal);
 	
 	camera.layers.enable(1);
 	
