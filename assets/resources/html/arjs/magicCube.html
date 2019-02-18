@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<title>Hello Cube</title>
+	<title>Many Cubes</title>
 	
 	<!-- include three.js -->
 	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
@@ -17,54 +17,49 @@
 	<script type="text/javascript" src="../../lib/threex/threex-artoolkitcontext.js"></script>
 	<script type="text/javascript" src="../../lib/threex/threex-arbasecontrols.js"></script>
 	<script type="text/javascript" src="../../lib/threex/threex-armarkercontrols.js"></script>
-	<script type="text/javascript" src="../../lib/threex/threex-arsmoothedcontrols.js"></script>
 	
 </head>
 <body style='margin : 0px; overflow: hidden; font-family: monospace;'>
-
 <script type="text/javascript">
 var scene, camera, renderer, clock, deltaTime, totalTime;
+var arToolkitSource, arToolkitContext;
+var patternArray, markerRootArray, markerGroupArray;
+var sceneGroup;
 
-var arToolkitSource, arToolkitContext, smoothedControls;
-
-var markerRoot1;
-
-var portal, potalMaterial;
-
-initialize(); 
+initialize();
 animate();
 
 function initialize(){
-	scene = new THREE.Scene();	// 씬 생성 
 	
-	// 조명 생성
+	// 씬 생성
+	scene = new THREE.Scene();
+	
+	// 조명 생성 후 씬에 삽입
 	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
 	scene.add(ambientLight);
 	
-	// 카메라 생성
+	// 카메라 생성 후 씬에 삽입
 	camera = new THREE.Camera();
 	scene.add(camera);
 	
-	// 랜더러 생성
+	// 랜더러 생성 및 설정 후 도큐먼트에 삽입
 	renderer = new THREE.WebGLRenderer({
 		antialias: true,
 		alpha: true
 	});
-	
-	// 랜더러 설정 및 도큐먼트에 추가 
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0);
 	renderer.setSize(640, 480);
 	renderer.domElement.style.position = 'absolute';
-	renderer.domElement.style.top = '0px;';
-	renderer.domElement.style.left = '0px;';
+	renderer.domElement.style.top = '0px';
+	renderer.domElement.style.left = '0px';
 	document.body.appendChild(renderer.domElement);
 	
-	// 클락 생성 및 타임 설정 
+	// 클락 생성 및 타이머 초기화
 	clock = new THREE.Clock();
 	deltaTime = 0; 
 	totalTime = 0; 
 	
-	// ArToolkitSouce 설정
+	// arToolkitSource 셋업
 	arToolkitSource = new THREEx.ArToolkitSource({
 		sourceType: 'webcam'
 	});
@@ -85,7 +80,7 @@ function initialize(){
 		onResize();
 	});
 	
-	// ArToolkitContext 생성 
+	// arToolkitContext 생성
 	arToolkitContext = new THREEx.ArToolkitContext({
 		cameraParametersUrl: 'data/camera_para.dat',
 		detectionMode: 'mono'
@@ -95,133 +90,142 @@ function initialize(){
 		camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
 	});
 	
-	// MarkerRoots 세팅 
-	markerRoot1 = new THREE.Group();
-	scene.add(markerRoot1);
+	// markerRoots 셋업
+	markerRootArray = [];
+	markerGroupArray = [];
+	patternArray = ['letterA', 'letterB', 'letterC', 'letterD', 'letterF', 'kanji'];
 	
-	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
-		type: 'pattern',
-		patternUrl: 'data/hiro.patt'
-	});
-	
-	// 움직일 때 마지막 위치에서 보간하여 부드러운 전환을 만듭니다
-	// 0 근처의 매개 변수 lerp 값은 느리고 1 근처는 빠름 (순간)입니다.
-	let smoothedRoot = new THREE.Group();
-	scene.add(smoothedRoot);
-	
-	smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
-		lerpPosition: 0.5,
-		lerpQuarternion: 0.5,
-		lerpScale: 1
-	});
-	
-	let loader = new THREE.TextureLoader();
-	let defaultMaterial = new THREE.MeshBasicMaterial({
-		map: loader.load('images/sphere-colored.png'), 
-		color: 0x444444,
-		side: THREE.DoubleSide,
-		transparent: true,
-		opacity: 0.6
-	});
-	
-	let portalWidth = 2; 
-	let portalHeight = 4;
-	let portalBorder = 0.1;
-	let geometry = new THREE.PlaneGeometry(portalWidth, portalHeight);
-	
-	portal = new THREE.Mesh(geometry, defaultMaterial);
-	portal.position.y = portalHeight/2 + portalBorder;
-	portal.layers.set(1);
-	smoothedRoot.add(portal);
-	
-	camera.layers.enable(1);
-	
-	portalMaterial = new THREE.MeshBasicMaterial({
-		color: 0xffff00, 
-		side: THREE.DoubleSide,
-		transparent: true,
-		opacity: 0.75
-	});
-	
-	let geometry1 = new THREE.PlaneGeometry(
-		portalWidth + 2*portalBorder,
-		portalHeight + 2*portalBorder
-	);
-	
-	let portalBorderMesh = new THREE.Mesh(geometry1, portalMaterial);
-	portalBorderMesh.position.y = portal.position.y;
-	portalBorderMesh.layers.set(0);
-	smoothedRoot.add(portalBorderMesh);
-	
-	let skyMaterialArray = [
-		new THREE.MeshBasicMaterial({map: loader.load('images/mountain/posx.jpg'), side: THREE.BackSide}), 
-		new THREE.MeshBasicMaterial({map: loader.load('images/mountain/negx.jpg'), side: THREE.BackSide}), 
-		new THREE.MeshBasicMaterial({map: loader.load('images/mountain/posy.jpg'), side: THREE.BackSide}), 
-		new THREE.MeshBasicMaterial({map: loader.load('images/mountain/negy.jpg'), side: THREE.BackSide}), 
-		new THREE.MeshBasicMaterial({map: loader.load('images/mountain/posz.jpg'), side: THREE.BackSide}), 
-		new THREE.MeshBasicMaterial({map: loader.load('images/mountain/negz.jpg'), side: THREE.BackSide}), 
+	let rotationArray = [
+		new THREE.Vector3(-Math.PI/2, 0, 0), 
+		new THREE.Vector3(0, -Math.PI/2, Math.PI/2), 
+		new THREE.Vector3(Math.PI/2, 0, Math.PI), 
+		new THREE.Vector3(-Math.PI/2, Math.PI/2, 0), 
+		new THREE.Vector3(Math.PI, 0, 0), 
+		new THREE.Vector3(0, 0, 0)
 	];
 	
-	let skyMesh = new THREE.Mesh(
-		new THREE.CubeGeometry(30, 30, 30),
-		skyMaterialArray
+	for(let i=0; i<6; i++){
+		let markerRoot = new THREE.Group();
+		markerRootArray.push(markerRoot);
+		scene.add(markerRoot);
+		let markerControls = new THREEx.ArMarkerControls(arToolkitContext, markerRoot, {
+			type: 'pattern',
+			patternUrl: 'data/' + patternArray[i] + '.patt'
+		});
+		
+		let markerGroup = new THREE.Group();
+		markerGroupArray.push(markerGroup);
+		markerGroup.position.y = -1.25/2;
+		markerGroup.rotation.setFromVector3(rotationArray[i]);
+		
+		markerRoot.add(markerGroup);
+	}
+	
+	sceneGroup = new THREE.Group();
+	sceneGroup.scale.set(1.25/2, 1.25/2, 1.25/2);
+	
+	let loader = new THREE.TextureLoader();
+	
+	let tileTexture = loader.load('images/tiles.jpg');
+	
+	let geometry = new THREE.BoxGeometry(2, 2, 2);
+	let material = new THREE.MeshBasicMaterial({
+		map: tileTexture,
+		side: THREE.BackSide
+	});
+	met mesh = new THREE.Mesh(geometry, material);
+	sceneGroup.add(mesh);
+	
+	let sphereGeometry = new THREE.SphereGeometry(0.20, 6, 6);
+	let sphereCenters = [
+		new THREE.Vector3(-1, -1, -1),
+		new THREE.Vector3(-1, -1, 1),
+		new THREE.Vector3(-1, 1, -1),
+		new THREE.Vector3(-1, 1, 1),
+		new THREE.Vector3(1, -1, 1),
+		new THREE.Vector3(1, 1, -1),
+		new THREE.Vector3(1, 1, 1)
+	];
+	
+	let sphereColors = [ 0x444444, 0x0000ff, 0x00ff00, 0x00ffff, 0xff0000, 0xff00ff, 0xffff00, 0xffffff ];
+	
+	for(let i=0; i<8; i++){
+		let sphereMesh = new THREE.Mesh(
+			sphereGeometry,
+			new THREE.MeshLambertMaterial(
+				map: tileTexture,
+				color: sphereColors[i]
+			)
+		);
+		
+		sphereMesh.position.copy(sphereCenters[i]);
+		sceneGroup.add(sphereMesh);
+	}
+	
+	let edgeGeometry = new THREE.CylinderGeometry(0.05, 0.05, 2, 32);
+	let edgeRotations = [
+		new THREE.Vector3(0, 0, Math.PI/2),
+		new THREE.Vector3(0, 0, Math.PI/2),
+		new THREE.Vector3(0, 0, Math.PI/2),
+		new THREE.Vector3(0, 0, Math.PI/2),
+		
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		new THREE.Vector3(0, 0, 0),
+		
+		new THREE.Vector3(Math.PI/2, 0, 0),
+		new THREE.Vector3(Math.PI/2, 0, 0),
+		new THREE.Vector3(Math.PI/2, 0, 0),
+		new THREE.Vector3(Math.PI/2, 0, 0)
+	];
+	
+	let edgeColors = [
+		0x880000, 0x880000, 0x880000, 0x880000,
+		0x008800, 0x008800, 0x008800, 0x008800,
+		0x000088, 0x000088, 0x000088, 0x000088
+	];
+	
+	for(let i=0; i<12; i++){
+		let edge = new THREE.Mesh(
+			edgeGeometry,
+			new THREE.MeshLambertMaterial({
+				map: tileTexture,
+				color: edgeColors[i]
+			});
+		);
+		edge.position.copy(degeCenters[i]);
+		dege.rotation.setFromVector3(edgeRotations[i]);
+		sceneGroup.add(dege);
+	}
+	
+	sceneGroup.add(
+		new THREE.Mesh(
+			new THREE.TorusKnotGeometory(0.5, 0.1),
+			new THREE.MeshNormalMaterial()
+		)		
 	);
 	
-	skyMesh.layers.set(2);
-	smoothedRoot.add(skyMesh);
-	
+	let pointLight = new THREE.PointLight(0xffffff, 1, 50);
+	pointLight.position.set(0.5, 3, 2);
+	scene.add(pointLight);
 }
 
 function update(){
-	
-	portalMaterial.color.setHSL(totalTime/10 % 1, 1, 0.75);
-	
-	//update artoolkit on every frame
 	if(arToolkitSource.ready !== false){
 		arToolkitContext.update(arToolkitSource.domElement);
 	}
 	
-	smoothedControls.update(markerRoot1);
+	for(let i=0; i<6; i++){
+		if(markerRootArray[i].visible){
+			markerGoupArray[i].add(sceneGroup);
+			console.log('visible:'+patternArray[i]);
+		}
+	}
 }
 
 function render(){
-	//renderer.render(scene, camera);
-	let gl = renderer.context;
-	
-	renderer.clear(true, true, true);
-	renderer.autoClear = false;
-	
-	gl.enable(gl.STENCIL_TEST);
-	
-	camera.layers.set(1);
-	
-	gl.stencilFunc(gl.ALWAYS, 1, 0xff);
-	gl.stencilOp(gl.KEEP, gl.KEEP, gl.REPLACE);
-	gl.stencilMask(0xff);
-	
-	gl.colorMask(false, false, false, false);
-	gl.depthMask(false);
-	
-	renderer.render(scene,  camera);
-	
-	gl.colorMask(true, true, true, true);
-	gl.depthMask(true);
-	
-	gl.stencilFunc(gl.EQUAL, 1, 0xff);
-	gl.stencilOp(gl.KEEP, gl.KEEP, gl.KEEP);
-	
-	camera.layers.set(2);
 	renderer.render(scene, camera);
-	
-	gl.stencilFunc(gl.NOTEQUAL, 1, 0xff);
-	gl.colorMask(true, true, true, true);
-	gl.depthMask(true);
-	
-	camera.layers.set(0);
-	renderer.render(scene,  camera);
-	
-	renderer.autoClear = true;
-	
 }
 
 function animate(){

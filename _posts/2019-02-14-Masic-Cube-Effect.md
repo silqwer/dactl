@@ -4,7 +4,7 @@ title:  "Masic Cube Effect"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/magic-cube.png
-overlay: green
+overlay: purple
 published: true
 
 ---
