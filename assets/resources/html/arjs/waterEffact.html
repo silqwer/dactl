@@ -72,7 +72,7 @@ function initialize(){
 	scene = new THREE.Scene();	// 씬 생성 
 	
 	// 조명 생성
-	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+	let ambientLight = new THREE.AmbientLight(0xcccccc, 1.00);
 	scene.add(ambientLight);
 	
 	// 카메라 생성
@@ -151,7 +151,7 @@ function initialize(){
 			time: { value: 1.0},
 			baseTexture: { value: texture1}
 		},
-		vertextShader: document.getElementById('vertexShader').textContent,
+		vertexShader: document.getElementById('vertexShader').textContent,
 		fragmentShader: document.getElementById('fragmentShader').textContent,
 		transparent: true
 	});
