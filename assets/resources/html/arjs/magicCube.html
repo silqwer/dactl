@@ -154,10 +154,10 @@ function initialize(){
 	for(let i=0; i<8; i++){
 		let sphereMesh = new THREE.Mesh(
 			sphereGeometry,
-			new THREE.MeshLambertMaterial(
+			new THREE.MeshLambertMaterial({
 				map: tileTexture,
 				color: sphereColors[i]
-			)
+			})
 		);
 		
 		sphereMesh.position.copy(sphereCenters[i]);
