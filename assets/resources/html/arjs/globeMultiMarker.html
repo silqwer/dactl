@@ -6,7 +6,6 @@
 	<title>Hello Cube</title>
 	
 	<!-- include three.js -->
-	<script type="text/javascript" src="../../lib/threejs/build/keyboard.js"></script>
 	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
 	
 	<!-- inclde jsartookit -->
@@ -22,7 +21,7 @@
 </head>
 <body style='margin : 0px; overflow: hidden; font-family: monospace;'>
 <script type="text/javascript">
-var scene, camera, renderer, clock, deltaTime, totalTime, keyboard;
+var scene, camera, renderer, clock, deltaTime, totalTime;
 
 var  arToolkitSource, arToolkitContext;
 
@@ -139,8 +138,6 @@ function initialize(){
 }
 
 function update(){
-	
-	keyboard.update();
 	
 	globe.rotation.y += 0.01;
 	
