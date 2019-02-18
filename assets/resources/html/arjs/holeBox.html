@@ -108,7 +108,7 @@ function initialize(){
 	let geometry1 = new THREE.CubeGeometry(2,2,2);
 	let loader = new THREE.TextureLoader();
 	let texture = loader.load('images/tiles.jpg');
-	let material1 = new THREE.MeshLamberMaterial({
+	let material1 = new THREE.MeshLambertMaterial({
 		transparent: true,
 		map: texture,
 		side: THREE.BackSide
