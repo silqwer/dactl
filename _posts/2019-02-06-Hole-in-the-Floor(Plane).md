@@ -4,7 +4,7 @@ title:  "Hole in the Floor(Plane)"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/hole-box.png
-overlay: purple
+overlay: orange
 published: true
 
 ---

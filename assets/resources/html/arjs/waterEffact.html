@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Hello Cube</title>
+	
+	<!-- include three.js -->
+	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
+	
+	<!-- inclde jsartookit -->
+	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.min.js"></script>
+	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.api.js"></script>
+	
+	<!-- include threex.artoolkit -->
+	<script type="text/javascript" src="../../lib/threex/threex-artoolkitsource.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-artoolkitcontext.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-arbasecontrols.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-armarkercontrols.js"></script>
+	
+</head>
+<body style='margin : 0px; overflow: hidden; font-family: monospace;'>
+
+<script id="vertexShader" type="x-shader/x-vertex">
+uniform float time;
+varying vec2 textureUV;
+uniform sampler2D baseTexture;
+void main(){
+	textureUV = uv;
+	vec2 repeatUV = textureUV * vec2(4.0, 1.0);
+	float sideDisplacement = 0.0;
+	if(repeatUV.y < 0.15){
+		float angle = atan(position.y, position.x);
+		float s1 = sin(8.3 * angle);
+		float s2 = sin(7.1 * angle);
+		sideDisplacement = 0.08 * s1 * s1 * abs(sin(0.65*time)) + 0.09 * s2 * s2 * abs(sin(0.74*time)); 
+	}
+	ver3 = newPosition = postion + normal * sideDisplacement;
+	gl_Position = projectionMatrix * modeViewMatrix * vec4(newPosition, 1.0);
+}
+</script>
+
+<script id="fragmentShader" type="x-shader/x-vertex">
+uniform float time;
+uniform sampler2D baseTexture;
+varying ver2 textureUV;
+void main(){
+	ver repeatUV = textureUV * vec2(4.0 , 1.0);
+	ver2 displaceUV = repeatUV + ver2(0.0, time/20.0);
+	float alpha = 1.0;
+	if(repeatUV.y < 0.315){
+		alpha = 1.0/0.315 * repeatUV.y;
+	}
+	ver4 tintColor = texture2D(baseTexture, displaceUV) * vec4(1.0, 1.0, 1.0, alpha);
+	gl_FragColor = tintColor;
+}
+</script>
+
+<script type="text/javascript">
+var scene, camera, renderer, clock, deltaTime, totalTime;
+
+var  arToolkitSource, arToolkitContext;
+
+var markerRoot1;
+
+var material1, mesh1;
+
+initialize(); 
+animate();
+
+function initialize(){
+	scene = new THREE.Scene();	// 씬 생성 
+	
+	// 조명 생성
+	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+	scene.add(ambientLight);
+	
+	// 카메라 생성
+	camera = new THREE.Camera();
+	scene.add(camera);
+	
+	// 랜더러 생성
+	renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+	
+	// 랜더러 설정 및 도큐먼트에 추가 
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0);
+	renderer.setSize(640, 480);
+	renderer.domElement.style.position = 'absolute';
+	renderer.domElement.style.top = '0px;';
+	renderer.domElement.style.left = '0px;';
+	document.body.appendChild(renderer.domElement);
+	
+	// 클락 생성 및 타임 설정 
+	clock = new THREE.Clock();
+	deltaTime = 0; 
+	totalTime = 0; 
+	
+	// ArToolkitSouce 설정
+	arToolkitSource = new THREEx.ArToolkitSource({
+		sourceType: 'webcam'
+	});
+	
+	function onResize(){
+		arToolkitSource.onResize();
+		arToolkitSource.copySizeTo(renderer.domElement);
+		if(arToolkitContext.arController !== null){
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+		}
+	}
+	
+	arToolkitSource.init(function onReady(){
+		onResize();
+	});
+	
+	window.addEventListener('resize', function(){
+		onResize();
+	});
+	
+	// ArToolkitContext 생성 
+	arToolkitContext = new THREEx.ArToolkitContext({
+		cameraParametersUrl: 'data/camera_para.dat',
+		detectionMode: 'mono'
+	});
+	
+	arToolkitContext.init(function onCompleted(){
+		camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+	});
+	
+	// MarkerRoots 세팅 
+	markerRoot1 = new THREE.Group();
+	markerRoot1.name = 'marker1';
+	scene.add(markerRoot1);
+	
+	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
+		type: 'pattern',
+		patternUrl: 'data/hiro.patt'
+	});
+	
+	let loader = new THREE.TextureLoader();
+	let geometry1 = new THREE.TorusGeometry(1, 1, 64, 256); 
+	let texture1 = loader.load('images/water-2.jpg');
+	texture1.wrapS = THREE.RepeatWrapping;
+	texture1.wrapT = THREE.RepeatWrapping;
+	texture1.repeat.set(8, 2);
+	
+	material1 = new THREE.ShaderMaterial({
+		uniforms:{
+			time: { value: 1.0},
+			baseTexture: { value: texture1}
+		},
+		vertextShader: document.getElementById('vertexShader').textContent,
+		fragmentShader: document.getElementById('fragmentShader').textContent,
+		transparent:true
+	});
+	
+	mesh1 = new THREE.Mesh(geometry1, material1);
+	mesh1.rotation.x = -Math.PI/2;
+	mesh1.scale.z = 0.10;
+	
+	markerRoot1.add(mesh1);
+	
+	let geometry2 = new THREE.CylinderGeometry(1, 1, 4, 32, 1);
+	let texture2 = loader.load('images/tiles.jpg', render);
+	textrue2.wrapS = THREE.RepeatWrapping;
+	textrue2.wrapT = THREE.RepeatWrapping;
+	textrue2.repeat.set(4, 2);
+	
+	let material2 = new THREE.MeshBasicMaterial({
+		transparent: true,
+		map: texture2,
+		side: THREE.BackSide
+	});
+	
+	mesh2 = new THREE.Mesh(geometry2, material2);
+	mesh2.position.y = -2;
+	markerRoot1.add(mesh2);
+	
+	let geometry0 = new THREE.RingGeometry(1, 9, 32);
+	let material0 = new THREE.MeshBasicMaterial({
+		colorWrite:false
+	});
+	
+	let mesh = new THREE.Mesh(geometry0, material0);
+	mesh0.rotation.x = -Math.PI/2;
+	markerRoot1.add(mesh0);
+}
+
+function update(){
+	
+	material1.uniforms.time.value += deltaTime;
+	
+	//update artoolkit on every frame
+	if(arToolkitSource.ready !== false){
+		arToolkitContext.update(arToolkitSource.domElement);
+	}
+}
+
+function render(){
+	renderer.render(scene, camera);
+}
+
+function animate(){
+	requestAnimationFrame(animate);
+	deltaTime = clock.getDelta();
+	totalTime += deltaTime;
+	update();
+	render();
+}
+</script>
+</body>
+</html>
