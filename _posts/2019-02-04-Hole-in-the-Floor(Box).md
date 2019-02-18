@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Hole-in-the-Floor(Box)"
+title:  "Hole in the Floor(Box)"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/hole-box.png
