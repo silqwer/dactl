@@ -194,7 +194,7 @@ function initialize(){
 			new THREE.MeshLambertMaterial({
 				map: tileTexture,
 				color: edgeColors[i]
-			});
+			})
 		);
 		edge.position.copy(degeCenters[i]);
 		dege.rotation.setFromVector3(edgeRotations[i]);
