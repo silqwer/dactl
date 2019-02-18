@@ -4,7 +4,7 @@ title:  "Warter effect AR"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/water-effect-AR.png
-overlay: red
+overlay: blue
 published: true
 
 ---

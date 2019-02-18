@@ -164,9 +164,9 @@ function initialize(){
 	
 	let geometry2 = new THREE.CylinderGeometry(1, 1, 4, 32, 1);
 	let texture2 = loader.load('images/tiles.jpg', render);
-	textrue2.wrapS = THREE.RepeatWrapping;
-	textrue2.wrapT = THREE.RepeatWrapping;
-	textrue2.repeat.set(4, 2);
+	texture2.wrapS = THREE.RepeatWrapping;
+	texture2.wrapT = THREE.RepeatWrapping;
+	texture2.repeat.set(4, 2);
 	
 	let material2 = new THREE.MeshBasicMaterial({
 		transparent: true,
