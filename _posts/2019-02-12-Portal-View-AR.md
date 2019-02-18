@@ -3,7 +3,7 @@ layout: post
 title:  "Portal View AR"
 tags:
   - Ar.js
-hero: /../assets/resources/img/arjs/portal-view-ar.png
+hero: /../assets/resources/img/arjs/portal-view-AR.png
 overlay: green
 published: true
 
