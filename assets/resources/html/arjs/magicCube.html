@@ -133,7 +133,7 @@ function initialize(){
 		map: tileTexture,
 		side: THREE.BackSide
 	});
-	met mesh = new THREE.Mesh(geometry, material);
+	let mesh = new THREE.Mesh(geometry, material);
 	sceneGroup.add(mesh);
 	
 	let sphereGeometry = new THREE.SphereGeometry(0.20, 6, 6);
