@@ -35,7 +35,7 @@ void main(){
 		float s2 = sin(7.1 * angle);
 		sideDisplacement = 0.08 * s1 * s1 * abs(sin(0.65*time)) + 0.09 * s2 * s2 * abs(sin(0.74*time)); 
 	}
-	ver3 = newPosition = postion + normal * sideDisplacement;
+	ver3 newPosition = postion + normal * sideDisplacement;
 	gl_Position = projectionMatrix * modeViewMatrix * vec4(newPosition, 1.0);
 }
 </script>

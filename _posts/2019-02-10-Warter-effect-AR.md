@@ -8,7 +8,7 @@ overlay: blue
 published: true
 
 ---
-Ar.js Hole Box 예제 실행해보기
-<!–-break-–>
+Ar.js Warter effect AR 예제 실행해보기
+<!–-break-–>ㄴ
                                                                          
 <iframe width="100%" height="500px;" src="/../assets/resources/html/arjs/waterEffact.html"></iframe>
