@@ -24,7 +24,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: monospace;'>
 
 <script type="text/javascript">
-var scene, camera, renderer, clock, deltaTime, totalTime, stats;
+var scene, camera, renderer, clock, deltaTime, totalTime;
 
 var  arToolkitSource, arToolkitContext;
 
@@ -63,9 +63,6 @@ function initialize(){
 	clock = new THREE.Clock();
 	deltaTime = 0; 
 	totalTime = 0; 
-	
-	stats = new Stats();
-	document.getElementById('chemistry').appendChild(stats.dom);
 	
 	// 조명 생성
 	let sceneLight = new THREE.pointLight(0xcccccc, 0.5, 100);
@@ -230,8 +227,6 @@ function initialize(){
 }
 
 function update(){
-	
-	stats.update();
 	
 	//update artoolkit on every frame
 	if(arToolkitSource.ready !== false){
