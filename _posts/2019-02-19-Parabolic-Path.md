@@ -4,7 +4,7 @@ title:  "Parabolic Path"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/parabolic-path.png
-overlay: blue
+overlay: green
 published: true
 
 ---
