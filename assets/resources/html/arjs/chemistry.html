@@ -158,7 +158,7 @@ function initialize(){
 			new THREE.SphereGeometry(nucleusRadius, 16, 16),
 			new THREE.MeshLambertMaterial({
 				color: nucleusColor,
-				map: loader.load('images/chemistry/label'+ elementString +'.png');
+				map: loader.load('images/chemistry/label'+ elementString +'.png')
 			})
 		);
 		nucleus.rotation.y = -Math.PI/2;
