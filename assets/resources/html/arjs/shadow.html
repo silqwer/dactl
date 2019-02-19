@@ -127,7 +127,7 @@ function initialize(){
 	let floorMaterial = new THREE.ShadowMaterial();
 	floorMaterial.opacity = 0.3;
 	let floorMesh = new THREE.Mesh(floorGeometry, floorMaterial);
-	floorMesh.rotation.x = -Mash.PI/2;
+	floorMesh.rotation.x = -Math.PI/2;
 	floorMesh.receiveShadow = true;
 	sceneGroup.add(floorMesh);
 	
