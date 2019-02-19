@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Model</title>
+	
+	<!-- include three.js -->
+	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
+	<script type="text/javascript" src="../../lib/threejs/js/loaders/OBJLoader.js"></script>
+	<script type="text/javascript" src="../../lib/threejs/js/loaders/MTLLoader.js"></script>
+	
+	
+	<!-- inclde jsartookit -->
+	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.min.js"></script>
+	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.api.js"></script>
+	
+	<!-- include threex.artoolkit -->
+	<script type="text/javascript" src="../../lib/threex/threex-artoolkitsource.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-artoolkitcontext.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-arbasecontrols.js"></script>
+	<script type="text/javascript" src="../../lib/threex/threex-armarkercontrols.js"></script>
+	
+</head>
+<body style='margin : 0px; overflow: hidden; font-family: monospace;'>
+<script type="text/javascript">
+var scene, camera, renderer, clock, deltaTime, totalTime;
+var arToolkitSource, arToolkitContext
+var markerRoot1;
+var mesh1;
+
+initialize();
+animate();
+
+function initialize(){
+	
+	// 씬 생성
+	scene = new THREE.Scene();
+	
+	// 조명 생성 후 씬에 삽입
+	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+	scene.add(ambientLight);
+	
+	// 카메라 생성 후 씬에 삽입
+	camera = new THREE.Camera();
+	scene.add(camera);
+	
+	// 랜더러 생성 및 설정 후 도큐먼트에 삽입
+	renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+	renderer.setClearColor(new THREE.Color('lightgrey'), 0);
+	renderer.setSize(640, 480);
+	renderer.domElement.style.position = 'absolute';
+	renderer.domElement.style.top = '0px';
+	renderer.domElement.style.left = '0px';
+	document.body.appendChild(renderer.domElement);
+	
+	// 클락 생성 및 타이머 초기화
+	clock = new THREE.Clock();
+	deltaTime = 0; 
+	totalTime = 0; 
+	
+	// arToolkitSource 셋업
+	arToolkitSource = new THREEx.ArToolkitSource({
+		sourceType: 'webcam'
+	});
+	
+	// onResize 함수 
+	function onResize(){
+		arToolkitSource.onResize();
+		arToolkitSource.copySizeTo(renderer.domElement);
+		if(arToolkitContext.arController !== null){
+			arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+		}
+	}
+	
+	arToolkitSource.init(function onReady(){
+		onResize();
+	});
+	
+	window.addEventListener('resize', function(){
+		onResize();
+	});
+	
+	// arToolkitContext 생성
+	arToolkitContext = new THREEx.ArToolkitContext({
+		cameraParametersUrl: 'data/camera_para.dat',
+		detectionMode: 'mono'
+	});
+	
+	// copy projection matrix to camera when initialization complete
+	arToolkitContext.init(function onCompleted(){
+		camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+	});
+	
+	// markerControls 빌드
+	markerRoot1 = new THREE.Group();
+	scene.add(markerRoot1);
+	
+	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
+		type: 'pattern',
+		patternUrl: 'data/hiro.patt'
+	});
+	
+	let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
+	let loader = new THREE.TextureLoader();
+	let material1 = new THREE.MeshBasicMaterial({color: 0x0000ff, opacity: 0.5});
+	mesh1 = new THREE.Mesh(geometry1, material1);
+	mesh1.rotation.x = -Math.PI/2;
+	markerRoot1.add(mesh1);
+	
+	function onProgress(xhr){
+		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+	}
+	
+	function onError(xhr){
+		console.log('An error happend');
+	}
+
+	new THREE.MTLLoader()
+		.setPath( 'models/' )
+		.load( 'Fox_01.mtl', function ( materials ) {
+			materials.preload();
+			new THREE.OBJLoader()
+				.setMaterials( materials )
+				.setPath( 'models/' )
+				.load( 'Fox_01.obj', function ( group ) {
+					mesh0 = group.children[0];
+					mesh0.material.side = THREE.DoubleSide;
+					mesh0.position.y = 0.25;
+					mesh0.scale.set(0.25,0.25,0.25);
+					markerRoot1.add(mesh0);
+				}, onProgress, onError );
+		});
+	
+}
+
+function update(){
+	if(arToolkitSource.ready !== false){
+		arToolkitContext.update(arToolkitSource.domElement);
+	}
+	
+}
+
+function render(){
+	renderer.render(scene, camera);
+}
+
+function animate(){
+	requestAnimationFrame(animate);
+	deltaTime = clock.getDelta();
+	totalTime += deltaTime;
+	update();
+	render();
+}
+</script>
+</body>
+</html>
