@@ -4,7 +4,7 @@ title:  "Shadow Balls"
 tags:
   - Ar.js
 hero: /../assets/resources/img/arjs/shadow-balls.png
-overlay: red
+overlay: blue
 published: true
 
 ---
