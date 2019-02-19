@@ -138,7 +138,7 @@ function initialize(){
 	videoTexture.minFilter = THREE.LinearFilter;
 	
 	let refractMaterial = new THREE.ShaderMaterial({
-		uniform:{
+		uniforms:{
 			texture: { value: videoTexture },
 			refractionRatio: { value: 0.75 },
 			distance: { value: 1.0 },
