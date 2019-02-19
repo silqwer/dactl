@@ -142,7 +142,7 @@ function initialize(){
 		ballMesh.position.copy(ballPositions[i]);
 		ballMesh.castShadow = true;
 		sceneGroup.add(ballMesh);
-		ballMeshArray[n] = ballMesh;
+		ballMeshArray[i] = ballMesh;
 	}
 	
 	let light = new THREE.PointLight(0xffffff, 1, 100);
