@@ -189,6 +189,7 @@ function parabolaEvaluate(p0, p1, p2, t){
 
 function parabolicPath(pointStart, pointEnd, time){
 	let pointMiddle = new THREE.Vector3().addVectors(pointStart, pointEnd).multiplyScalar(0.5).add(new THREE.Vector3(0,2,0));
+	
 	return new THREE.Vector3(
 			parabolaEvaluate( pointStart.x, pointMiddle.x, pointEnd.x, time ),
 			parabolaEvaluate( pointStart.y, pointMiddle.y, pointEnd.y, time ),
