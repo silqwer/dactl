@@ -35,10 +35,6 @@ animate();
 function initialize(){
 	scene = new THREE.Scene();	// 씬 생성 
 	
-	// 조명 생성
-	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
-	scene.add(ambientLight);
-	
 	// 카메라 생성
 	camera = new THREE.Camera();
 	scene.add(camera);
