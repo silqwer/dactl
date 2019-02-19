@@ -8,7 +8,7 @@ overlay: blue
 published: true
 
 ---
-Ar.js Shadow 예제 실행해보기
+Ar.js Shadow Balls 예제 실행해보기
 <!–-break-–>
                                                                          
 <iframe width="100%" height="500px;" src="/../assets/resources/html/arjs/shadowBalls.html"></iframe>
