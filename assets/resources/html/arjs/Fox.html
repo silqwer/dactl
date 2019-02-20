@@ -121,12 +121,12 @@ function initialize(){
 
 	new THREE.MTLLoader()
 		.setPath( 'models/' )
-		.load( 'Fox_01.mtl', function ( materials ) {
+		.load( 'Moon 2K.mtl', function ( materials ) {
 			materials.preload();
 			new THREE.OBJLoader()
 				.setMaterials( materials )
 				.setPath( 'models/' )
-				.load( 'Fox_01.obj', function ( group ) {
+				.load( 'Moon 2K.obj', function ( group ) {
 					mesh0 = group.children[0];
 					mesh0.material.side = THREE.DoubleSide;
 					mesh0.position.y = 0.25;
