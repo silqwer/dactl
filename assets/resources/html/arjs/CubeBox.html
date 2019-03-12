@@ -3,13 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<title>Model</title>
+	<title>Hello Cube</title>
 	
 	<!-- include three.js -->
 	<script type="text/javascript" src="../../lib/threejs/build/three.js"></script>
-	<script type="text/javascript" src="../../lib/threejs/js/loaders/OBJLoader.js"></script>
-	<script type="text/javascript" src="../../lib/threejs/js/loaders/MTLLoader.js"></script>
-	
 	
 	<!-- inclde jsartookit -->
 	<script type="text/javascript" src="../../lib/jsartoolkit5/artoolkit.min.js"></script>
@@ -25,31 +22,34 @@
 <body style='margin : 0px; overflow: hidden; font-family: monospace;'>
 <script type="text/javascript">
 var scene, camera, renderer, clock, deltaTime, totalTime;
-var arToolkitSource, arToolkitContext
-var markerRoot1;
+
+var  arToolkitSource, arToolkitContext;
+
+var markerRoot1, markerRoot2;
+
 var mesh1;
 
-initialize();
+initialize(); 
 animate();
 
 function initialize(){
+	scene = new THREE.Scene();	// 씬 생성 
 	
-	// 씬 생성
-	scene = new THREE.Scene();
-	
-	// 조명 생성 후 씬에 삽입
+	// 조명 생성
 	let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
 	scene.add(ambientLight);
 	
-	// 카메라 생성 후 씬에 삽입
+	// 카메라 생성
 	camera = new THREE.Camera();
 	scene.add(camera);
 	
-	// 랜더러 생성 및 설정 후 도큐먼트에 삽입
+	// 랜더러 생성
 	renderer = new THREE.WebGLRenderer({
 		antialias: true,
 		alpha: true
 	});
+	
+	// 랜더러 설정 및 도큐먼트에 추가 
 	renderer.setClearColor(new THREE.Color('lightgrey'), 0);
 	renderer.setSize(640, 480);
 	renderer.domElement.style.position = 'absolute';
@@ -57,17 +57,16 @@ function initialize(){
 	renderer.domElement.style.left = '0px';
 	document.body.appendChild(renderer.domElement);
 	
-	// 클락 생성 및 타이머 초기화
+	// 클락 생성 및 타임 설정 
 	clock = new THREE.Clock();
 	deltaTime = 0; 
 	totalTime = 0; 
 	
-	// arToolkitSource 셋업
+	// ArToolkitSouce 설정
 	arToolkitSource = new THREEx.ArToolkitSource({
 		sourceType: 'webcam'
 	});
 	
-	// onResize 함수 
 	function onResize(){
 		arToolkitSource.onResize();
 		arToolkitSource.copySizeTo(renderer.domElement);
@@ -84,65 +83,54 @@ function initialize(){
 		onResize();
 	});
 	
-	// arToolkitContext 생성
+	// ArToolkitContext 세팅
+	
+	// ArToolkitContext 생성 
 	arToolkitContext = new THREEx.ArToolkitContext({
 		cameraParametersUrl: 'data/camera_para.dat',
 		detectionMode: 'mono'
 	});
 	
-	// copy projection matrix to camera when initialization complete
 	arToolkitContext.init(function onCompleted(){
 		camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
 	});
 	
-	// markerControls 빌드
+	// MarkerRoots 세팅 
 	markerRoot1 = new THREE.Group();
 	scene.add(markerRoot1);
-	
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
 		type: 'pattern',
-		patternUrl: 'data/hiro.patt'
+		patternUrl: 'data/letterA.patt'
 	});
 	
-	let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
-	let loader = new THREE.TextureLoader();
-	let material1 = new THREE.MeshBasicMaterial({color: 0x0000ff, opacity: 0.5});
+	markerRoot2 = new THREE.Group();
+	scene.add(markerRoot2);
+	let markerControls2 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot2, {
+		type: 'pattern',
+		patternUrl: 'data/letterB.patt'
+	});
+	
+	
+	let geometry1 = new THREE.CubeGeometry(1,1,1);
+	let material1 = new THREE.MeshNormalMaterial({
+		transparent: true,
+		opacity: 0.5,
+		side: THREE.DoubleSide
+	});
+	
 	mesh1 = new THREE.Mesh(geometry1, material1);
-	mesh1.rotation.x = -Math.PI/2;
+	mesh1.position.y = 0.5;
 	markerRoot1.add(mesh1);
-	
-	function onProgress(xhr){
-		console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-	}
-	
-	function onError(xhr){
-		console.log('An error happend');
-	}
-
-	new THREE.MTLLoader()
-		.setPath( 'models/' )
-		.load( 'Moon 2K.mtl', function ( materials ) {
-			materials.preload();
-			new THREE.OBJLoader()
-				.setMaterials( materials )
-				.setPath( 'models/' )
-				.load( 'Moon 2K.obj', function ( group ) {
-					mesh0 = group.children[0];
-					mesh0.material.side = THREE.DoubleSide;
-					mesh0.position.y = 0.25;
-					mesh0.scale.set(0.1,0.1,0.1);
-					markerRoot1.add(mesh0);
-				}, onProgress, onError );
-		});
-	
 }
 
 function update(){
+	//update artoolkit on every frame
 	if(arToolkitSource.ready !== false){
 		arToolkitContext.update(arToolkitSource.domElement);
 	}
-	
 }
+
+function atobPaht()
 
 function render(){
 	renderer.render(scene, camera);
