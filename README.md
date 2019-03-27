@@ -5,78 +5,33 @@
 Photo      | Future
 -----------|--------------
 ![](https://raw.github.com/rhiokim/resume/master/photos/rhiokim.jpg) | ![](https://raw.github.com/rhiokim/resume/master/photos/picasso.jpg) + ![](https://raw.github.com/rhiokim/resume/master/photos/beethoven.jpg)
-Name       | 홍길동
- - Chinese | 金良洹 
- - English | Rhio Kim
-Age        | 20 
-Birth Day  | YYYY.MM.DD
-Email      | my.email@gmail.com
-Mobile     | xxx-xxxx-xxxx
+Name       | 김용호
+ - 한문 | 金龍虎
+ - English | Kim Yong Ho
+Age        | 32 
+Birth Day  | 1987.05.05
+Email      | silqewr@naver.com
 
-
-###### 신상정보
-
-Profile    | Content
------------|--------------------------------------
-Address    | 서울 강남구 역삼동 123-12 아파트 304층 3041호
-Mobile     | xxx-xxxx-xxxx
-Married    | 기혼 or 미혼
-Family     | 1남 2녀
-Blood type | RH+ A
-Religion   | 없음
   
 ###### 학력정보
 
-Level       | School Name    | Major            | Start   | End     | Status    | 최종학력
+학교구분     | 학교명    | 전공            | 입학   | 졸업     | 졸업상태    | 최종학력
 ------------|----------------|------------------|---------|---------|-----------|--------
-University  | xx University  | Computer Science | YYYY.MM | YYYY.MM | graduated | 최종
-High School | xx High School |                  | YYYY.MM | YYYY.MM | graduated |
+대학교  | 한국산업기술대학교  | 게임공학과 | 2007.03 | 2014.08 | 졸업 | 최종
+고등학교 | 신흥고등학교 | 이과 | 2003.03 | 2006.06 | 졸업 |
 
 ### 직장이력
 Period            | Company      | Part > Team                    
 ------------------|--------------|-----------------------------
-2011.10 - 2013.4  | Company Inc  | R&D > Mobile
-2010.05 - 2011.9  | Company Corp | Big Data > Visualize
-2008.08 - 2010.3  | Venture      | Web > UI
-2007.02 - 2008.8  | Company Name | Marketing 3
-
-  
-## 오픈소스 프로젝트 <small>(2012.03 ~ 현재)</small>
-* 프로젝트 공식 명칭
-  - 소개  
-  > 프로젝트에 대한 간략한 소개를 한다.  
-  - 주요기능  
-  > * 주요 기능을 일일이 상세히 나열한다.  
-  - 사용기술    
-  > * 사용된 기술을 상세히 나열한다.  
-  
-  - 개발기간 : 2013.2.3 을 시작으로 최근까지 [xxx 커밋](https://github.com/rhiokim/resume/commits/master)
-  - 공식 사이트 - [http://rhiokim.github.io/resume](http://rhiokim.github.io/resume)
-  - 소스 저장소 - [https://github.com/rhiokim/resume](https://github.com/rhiokim/resume)  
-  
-* 마크다운 이력서 표준화 프로젝트
-  - 소개  
-  > 이력서에 대한 몇가지 불편한 마음을 개선하고자 마크다운 이력서 표준화 프로젝트를 시작한다.   
-  > 1. 개발자를 잘 표현할 이력서 양식이 없다.   
-  > 2. 2,3 년에 한번씩 업데이트 해야하는 이력서 너무 힘들다.  
-  > 3. 이력서 양식이 도구에 너무 의존적이다.  
-  
-  - 주요기능  
-  > * 마크다운으로 기술한다.  
-  > * PDF, HTML, EPUB, Mobi 등 다양한 포맷으로 변환할 수 있다.  
-  > * 개발자를 잘 표현할 수 있다.  
-  
-  - 사용기술  
-  > 마크다운.  
-  - 개발기간 : 2012.3 을 시작으로 약 6개월에 걸쳐 500여 커밋  
-  - 공헌자 : [https://github.com/rhiokim/resume/contributors](https://github.com/rhiokim/resume/contributors)
-  - 공식 사이트 - [http://rhiokim.github.io/resume](http://rhiokim.github.io/resume)
-  - 소스 저장소 - [https://github.com/rhiokim/resume](https://github.com/rhiokim/resume)
-  
+2016.02 - 현재  | 테크빌교육(주)  | 웹 개발
+2015.02 - 2016.22  | (주) 모겐토 | 웹 개발
+2014.03 - 2014.06  | (주) 노리소프트     | 게임 기획
+2012.12 - 2013.06  | (주) 클라우드 애플리케이션 팩토리 | 앱 기획
   
 ### 기타 공개/비공개 프로젝트
-* 프로젝트 명  
-> - 추가 설명 : https://vimeo.com/51812784
+* 고사빌 (Gosaville)
+> - 시험 감독관 신청 사이트  
+> - 영상 : https://vimeo.com/51812784
 
 ### 진행중인 프로젝트 <small>(2013.04 ~ 현재)</small>
 
@@ -102,7 +57,7 @@ Period            | Company      | Part > Team
   - 공식 사이트: https://project.com  
   - 소스 저장소: https://github.com/company/project  
 
-#### 회사명 2
+#### (주) 모겐토
 * 프로젝트  
   - 소개  
   > 프로젝트에 대한 간략한 소개를 한다.  
@@ -127,24 +82,21 @@ Period            | Company      | Part > Team
 행사 / 모임      |   주제                |  규모   | 관련 참고 자료
 ---------------|---------------------|--------|----------------------
 XX R&D Campus  | 1. subject 1        | 30     | http://bit.ly/xxxxxx
-               | 2. subject 2        |        | http://bit.ly/xxxxxx
 
 #### 컨퍼런스, 강연
 행사 / 모임        |   주제        |  규모   | 관련 참고 자료
 ----------------|--------------|--------|----------------------
 Conference      | Title        | 250    | http://bit.ly/xxxxxx
-Conference      | Title        | 1,000  | http://bit.ly/xxxxxx
 
 ## 소셜
 Site     | URL
 ---------|-------------------------------
-Github   | https://github.com/{account}
-Twitter  | https://twitter.com/{account}
-Facebook | https://facebook.com/{account}
+Github   | https://github.com/silqwer
+Facebook   | https://www.facebook.com/yongho.kim.58
 
 <br><br>
 ---
 위의 사실은 GNU 정신에 의거하여 사실임을 증명하며, 만약 사실이 아닐 경우 MIT 라이센스로 공개해도 무방합니다.
 
-YYYY년 MM월 DD일
-{홍길동}
+2019년 03월 19일
+{김용호}
