@@ -2,15 +2,14 @@
 
 ###### 기본정보  
 
-Photo      | Future
------------|--------------
-![](https://raw.github.com/rhiokim/resume/master/photos/rhiokim.jpg) | ![](https://raw.github.com/rhiokim/resume/master/photos/picasso.jpg) + ![](https://raw.github.com/rhiokim/resume/master/photos/beethoven.jpg)
+
 Name       | 김용호
+-----------|--------------
  - 한문 | 金龍虎
  - English | Kim Yong Ho
 Age        | 32 
 Birth Day  | 1987.05.05
-Email      | silqewr@naver.com
+Email      | silqwr@naver.com
 
   
 ###### 학력정보
@@ -31,68 +30,77 @@ Period            | Company      | Part > Team
 ### 기타 공개/비공개 프로젝트
 * 고사빌 (Gosaville)
 > - 시험 감독관 신청 사이트  
-> - 영상 : https://vimeo.com/51812784
+> - 소스: https://github.com/silqwer/gosa
 
-### 진행중인 프로젝트 <small>(2013.04 ~ 현재)</small>
+### 진행중인 프로젝트 <small>(2019.03 ~ 현재)</small>
 
-* 프로젝트 명
+* VR 플랫폼
   - 소개  
-  > 모바일 앱으로 현재 3명의 멤버가 개발 진행 중  
+  > 360 이미지를 기반으로 현재 2명의 멤버가 서비스에 필요한 기능을 개발 진행 중
   - 사용기술  
-  > Node.js, Mongodb, APNS(Apple Notification), Gumby2 (Responsive CSS Framework)  
+  > Ar.js, Aframe.js, Panolens.js, Three.js
   - 역할  
-  > RESTful API 디자인, 시스템(Node.js, Mongodb, APNS) 엔지니어링, 웹 사이트 개발  
+  > 웹 사이트 개발 및 서비스 기능 개발  
 
 ## 참여한 프로젝트 이력
 
-#### 회사명 1
-* 프로젝트
+#### 테크빌교육(주)
+* 통합정보시스템
   - 소개  
-  > 프로젝트에 대한 간략한 소개를 한다.  
+  > VR/AR 기반의 자동차 정비, 점검. 학습 및 평가 관리. 차량정보 관리
   - 역할  
-  > * 자기가 참여한 프로젝트에서 했던 역할에 대해서 기술한다.  
+  > * 통합정보 시스템 개발
   - 사용기술  
-  > * Backbone.js, jQuery, require.js, grunt.js, twitter bootstrap, Node.js 등  
+  > * spring3, spring security, jQuery, ztree 등  
   - 개발기간: 12개월  
-  - 공식 사이트: https://project.com  
-  - 소스 저장소: https://github.com/company/project  
+  - 영상(HTC바이브 연동): https://youtu.be/vX5ldp7bIlQ
+ 
+
+* AR Studio
+  - 소개  
+  > 웨어러블 디바이스와 AR기술을 활용하는 지식서비스 시스탬 개발
+  - 역할  
+  > * 사용자 페이지 개발
+  - 사용기술  
+  > * spring3, spring security, sso 연동, jQuery, jQuery-ui, fabric.js, ztree 등  
+  - 개발기간: 12개월  
+  - 영상(sso 연동): https://youtu.be/kTfG6BMFyrQ
+  - 영상(저작): https://youtu.be/LBPEEe_pCTE
+
+* 알기쉬운 코딩: 피지컬 컴퓨팅
+  - 소개  
+  > EPL 을 활용한 코딩과 3D시뮬레이션 알기쉬운 코딩, 피지컬 컴퓨팅
+  - 역할  
+  > * 관리자 페이지, 사용자 페이지 개발, ISMS
+  - 사용기술  
+  > * spring3, spring security, jQuery, lucy-xss-servlet-filter, javax.mail 등  
+  - 개발기간: 12개월  
+  - 영상: https://youtu.be/w9Am9mPuPxQ
+  - 영상(앱 연동): https://youtu.be/rC-NrdkYRGA
+  
+* 시나리오 저작도구
+  - 소개  
+  > 혼합현실 기법을 활용한 재난방지 시뮬레이션 기술 개발  
+  - 역할  
+  > * 사용자 페이지 개발, 공간저작도구(Unity)와의 연동
+  - 사용기술  
+  > * spring3, spring security, jQuery, fabric.js 등  
+  - 개발기간: 12개월  
+  - 영상: https://youtu.be/Ons3rnsqk5E
 
 #### (주) 모겐토
-* 프로젝트  
+* Passville  
   - 소개  
-  > 프로젝트에 대한 간략한 소개를 한다.  
+  > 문제풀이 웹앱.  
   - 역할  
-  > * 자기가 참여한 프로젝트에서 했던 역할에 대해서 기술한다.  
+  > * 관리자 페이지 개발, 사용자 페이지 개발(문제풀이, 모의고사, 오답노트, 문자발송 연동).  
   - 사용기술  
-  > * Backbone.js, jQuery, require.js, grunt.js, twitter bootstrap, Node.js 등
+  > * spring3, bootstrap3, jQuery, jQuery-UI 등
   - 개발기간: 6개월  
-  - 공식 사이트: https://project.com  
-  - 소스 저장소: https://github.com/company/project  
+  - 영상: https://www.youtube.com/watch?v=x79gUNFlBBE&feature=youtu.be
 
 
 
-## 대외 활동 내역
-#### 커뮤니티
-커뮤니티명     | 주제     | 관련 참고 자료
-------------|---------|-----------------------------
-2010.05     | Title   | http://slidesha.re/xxxxxx
-2010.10     | Title   | http://scr.bi/xxxxxxx
-
-#### 세미나
-행사 / 모임      |   주제                |  규모   | 관련 참고 자료
----------------|---------------------|--------|----------------------
-XX R&D Campus  | 1. subject 1        | 30     | http://bit.ly/xxxxxx
-
-#### 컨퍼런스, 강연
-행사 / 모임        |   주제        |  규모   | 관련 참고 자료
-----------------|--------------|--------|----------------------
-Conference      | Title        | 250    | http://bit.ly/xxxxxx
-
-## 소셜
-Site     | URL
----------|-------------------------------
-Github   | https://github.com/silqwer
-Facebook   | https://www.facebook.com/yongho.kim.58
 
 <br><br>
 ---
