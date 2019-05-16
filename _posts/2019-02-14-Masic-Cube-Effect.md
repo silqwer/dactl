@@ -8,7 +8,7 @@ overlay: purple
 published: true
 
 ---
-Ar.js Masic Cube Effect 예제
+## Ar.js Masic Cube Effect 예제
 {: .lead}
 ## 코드
 <!–-break-–>

@@ -8,7 +8,7 @@ overlay: blue
 published: true
 
 ---
-Ar.js Shadow Balls 예제
+##Ar.js Shadow Balls 예제
 {: .lead}
 ## 코드
 <!–-break-–>

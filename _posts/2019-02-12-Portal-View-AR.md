@@ -8,7 +8,7 @@ overlay: green
 published: true
 
 ---
-Ar.js Portal View AR 예제
+## Ar.js Portal View AR 예제
 {: .lead}
 ## 코드
 <!–-break-–>
@@ -17,5 +17,4 @@ Ar.js Portal View AR 예제
 <img src="/../assets/resources/img/arjs/hiro.png" alt="마커이미지">
 이 예제는 **카메라**로 **마커이미지** **Hiro**를 비춰야 정상적으로 실행 할 수 있습니다.
 {: .notice}
-<iframe width="100%" height="500px;" src="/../assets/resources/html/arjs/magicCube.html"></iframe>
 <iframe width="100%" height="500px;" src="/../assets/resources/html/arjs/portalView.html"></iframe>

@@ -8,7 +8,8 @@ overlay: red
 published: true
 
 ---
-Ar.js Hole Box 예제 실행해보기
+## Ar.js Hole Box 예제
+{: .lead}
+## 코드
 <!–-break-–>
-                                                                         
 <iframe width="100%" height="500px;" src="/../assets/resources/html/arjs/holeRing.html"></iframe>

@@ -8,7 +8,7 @@ overlay: orange
 published: true
 
 ---
-Ar.js Refraction 예제
+## Ar.js Refraction 예제
 {: .lead}
 ## 코드
 <!–-break-–>
