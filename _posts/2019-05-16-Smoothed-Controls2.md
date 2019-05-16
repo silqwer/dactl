@@ -9,8 +9,8 @@ published: true
 
 ---
 
-<iframe width="100vw" height="80vw;" src="/../assets/resources/html/arjs/smoothedControls.html"></iframe>
+<iframe width="100%" height="100vw;" src="/../assets/resources/html/arjs/smoothedControls.html"></iframe>
 
 <div></div>
 
-<iframe width="100vw" height="80vw;" src="/../assets/resources/html/arjs/smoothedControls.html"></iframe>
+<iframe width="100%" height="100vw;" src="/../assets/resources/html/arjs/smoothedControls.html"></iframe>
