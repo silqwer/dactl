@@ -10,9 +10,11 @@ published: true
 ---
 ## 360VR
 Aframe.js 에서 IPD 설정이 가능한지 여부를 확인이 필요했다. 우선 IPD가 무엇인지 알아보자.
+{: .lead}
 
 ## IPD
 IPD: Inter pupillary distance, <a href='https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=Interpupillary+distance'>동공 거리</a>
+<!–-break-–>
 
 양쪽 눈의 동공 중심을 잇는 선의 거리.
 사람에 따라 다소 차이는 있으나 대개 65mm이다.
@@ -22,5 +24,5 @@ IPD: Inter pupillary distance, <a href='https://search.naver.com/search.naver?sm
 
 우선 aframe-marster.js 에서 IPD가 언급되는 부분이 있는지 검색을 했다.
 setProjectionFromUnion에서 IPD가 선언된다.
-![1200x700](/../assets/resources/img/aframe/ipd.png "aframe ipd"){:.oversize}
+![800x400](/../assets/resources/img/aframe/ipd.png "aframe ipd"){:.oversize}
 
