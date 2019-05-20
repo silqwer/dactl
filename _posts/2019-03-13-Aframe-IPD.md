@@ -24,5 +24,6 @@ IPD: Inter pupillary distance, <a href='https://search.naver.com/search.naver?sm
 
 우선 aframe-marster.js 에서 IPD가 언급되는 부분이 있는지 검색을 했다.
 setProjectionFromUnion에서 IPD가 선언된다.
-![800x400](/../assets/resources/img/aframe/ipd.png "aframe ipd"){:.oversize}
+<img src='/../assets/resources/img/aframe/ipd.png' alt='aframe ipd'>
+
 
