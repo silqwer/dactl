@@ -26,4 +26,6 @@ IPD: Inter pupillary distance, <a href='https://search.naver.com/search.naver?sm
 setProjectionFromUnion에서 IPD가 선언된다.
 <img src='/../assets/resources/img/aframe/ipd.png' alt='aframe ipd'>
 
+다시 setProjectionFromUnion은 this.getCamera = function ( camera ) 함수에서 호출된다. 
+<img src='/../assets/resources/img/aframe/ipd.png' alt='aframe ipd'>
 
