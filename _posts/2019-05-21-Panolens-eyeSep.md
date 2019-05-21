@@ -18,7 +18,7 @@ panolens에서 IPD를 따로 설정해 주는 부분이 없다. 깃허브에도 
 ## StereoEffect
 <img src='/../assets/resources/img/panolens/stereo.png' alt='stereo'> 소스에서 Stereoscopic으로 검색을 해서 따라가니 enableEffect 함수와 엮여있었다. 
 
-## enableEffect
+## enableEffect                             enableEffect
 <img src='/../assets/resources/img/panolens/enableEffect.png' alt='enableEffect'>
 함수는 위와가 같이 작성이 되어 있었고 StereoEffect, CardboardEffect 단어가 눈에 들어왔다. 다시 CardboardEffect으로 검색하니 PANOLENS.Viewer의 생성자에서 StereoEffect, CardboardEffect을 선언하고 있었다.
 
@@ -29,7 +29,7 @@ panolens에서 IPD를 따로 설정해 주는 부분이 없다. 깃허브에도 
 <img src='/../assets/resources/img/panolens/stereoCamera.png' alt='eyeSeparation'> 여기기서 보니 eyeSep 값이 0.064로 내가 알고 있던 ipd의 평균 수치 (60mm~65mm)의 값과 근사해서 혹시나 싶었다. panolens의 기본 예제에서 증가버튼, 감소버튼, eyeSep 출력을 추가하고 eyeSep 을 조절하면 KRpano의 IPD 설정과 똑같이 동작하는지 확인했다.
 
 ## KRPANO IPD
-<img src='/../assets/resources/img/panolens/panolens ipd.gif' alt='eyeSeparation'>
+<img src='/../assets/resources/img/panolens/krpano ipd.gif' alt='eyeSeparation'>
 ## 구현물
 <img src='/../assets/resources/img/panolens/panolens ipd.gif' alt='eyeSeparation'>
 
