@@ -26,8 +26,15 @@ panolens에서 IPD를 따로 설정해 주는 부분이 없다. 깃허브에도 
 <img src='/../assets/resources/img/panolens/stereoEffect.png' alt='stereoEffect'> 쭉~ 코드를 읽어 가다가 setEyeSeparation? EyeSeparation을 set하는 함수인데 EyeSeparation가 뭐지? <img src='/../assets/resources/img/panolens/eyeSeparation.png' alt='eyeSeparation'> 번역을 해보니 눈 분리!!! _stereo.eyeSep 값이 얼마로 설정되어 있는지 확인하기 위해 보니 _stereo는 three.js 의 new THREE.StereoCamera 였다.
 
 ## new THREE.StereoCamera
-<img src='/../assets/resources/img/panolens/stereoCamera.png' alt='eyeSeparation'> 여기기서 보니 eyeSep 값이 0.064로 내가 알고 있던 ipd의 평균 수치 (60mm~65mm)의 값과 근사해서 혹시나 싶었다. 
+<img src='/../assets/resources/img/panolens/stereoCamera.png' alt='eyeSeparation'> 여기기서 보니 eyeSep 값이 0.064로 내가 알고 있던 ipd의 평균 수치 (60mm~65mm)의 값과 근사해서 혹시나 싶었다. panolens의 기본 예제에서 증가버튼, 감소버튼, eyeSep 출력을 추가하고 eyeSep 을 조절하면 KRpano의 IPD 설정과 똑같이 동작하는지 확인했다.
 
+## KRPANO IPD
+<img src='/../assets/resources/img/panolens/panolens ipd.gif' alt='eyeSeparation'>
+## 구현물
+<img src='/../assets/resources/img/panolens/panolens ipd.gif' alt='eyeSeparation'>
+
+## 결과
+코딩 결과를 비교해서 보니 동작하는 모습이 비슷해보였다. 실제로 IPD의 값이 안맞은 예제나 핸드폰이 있으면 가지고 테스트할 가치가 있다.
 
 
 
