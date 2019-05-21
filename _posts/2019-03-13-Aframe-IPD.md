@@ -7,7 +7,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/aframe/ipd post.png
-overlay: blue
+overlay: red
 published: true
 
 ---
