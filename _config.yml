@@ -20,8 +20,8 @@ blog:
   titles_only                : false # show post titles only on main blog page
 
 # Fonts
-  font                       : '"Do Hyeon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif'
-  load_google_fonts          : 'Do Hyeon:400,400italic,700,700italic'
+  font                       : '"Nanum Gothic Coding", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif'
+  load_google_fonts          : 'Nanum Gothic Coding:400,400italic,700,700italic'
 
 
 # Author info
