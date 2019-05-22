@@ -9,7 +9,7 @@ overlay: blue
 published: true
 
 ---
-마우스 휠 이벤트 입력 테스트
+## 마우스 휠 이벤트 입력 테스트
 <!–-break-–>
 
 <script>
@@ -83,5 +83,5 @@ document.addEventListener("DOMContentLoaded", function(){
 	<div id="btn2" class="btn"></div>
 	<div id="btn3" class="btn"></div>
 </div>
-
-<h1 id="result">스크롤을 해주세요.</h1>
+## 스크롤을 해주세요. 
+<h1 id="result"></h1>

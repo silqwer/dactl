@@ -8,8 +8,8 @@ overlay: red
 published: true
 
 ---
-Threejs grid plane example test 
-<!–-break-–>
+## Threejs grid plane example test 
+{: .lead}
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="/../assets/resources/lib/threejs/build/three.js"></script>

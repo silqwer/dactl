@@ -9,7 +9,7 @@ overlay: orange
 published: true
 
 ---
-SVG file에 jquery.mobile을 넣고 swipe 함수가 동작하는지 확인하는 테스트
+## SVG file에 jquery.mobile을 넣고 swipe 함수가 동작 확인
 <!–-break-–>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
