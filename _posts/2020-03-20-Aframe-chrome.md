@@ -16,7 +16,7 @@ published: true
 <!–-break-–>
 
 ## 추적
-<img src='/../assets/resources/img/aframe/chrome/error.jpg' alt='error'>에러를 보면 장비와 관련해서 오류가 나는 것 같은데... 달라긴 것은 Chrome을 버전업 해서 m73이라는 것 혹시나 하고 깃헙으로 달려갔다. 
+<img src='/../assets/resources/img/aframe/chrome/error.png' alt='error'>에러를 보면 장비와 관련해서 오류가 나는 것 같은데... 달라긴 것은 Chrome을 버전업 해서 m73이라는 것 혹시나 하고 깃헙으로 달려갔다. 
 <a href='https://github.com/immersive-web/webxr-samples/issues/35'>https://github.com/immersive-web/webxr-samples/issues/35</a>
 <img src='/../assets/resources/img/aframe/chrome/m73.png' alt='m73'>
 m73으로 크롬이 업데이트 되면서 사양이 변경됐고 구현간 불일치가 있어서 오류가 난다는 내용이었다. 
