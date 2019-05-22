@@ -10,6 +10,7 @@ published: true
 
 ---
 ## SVG file에 jquery.mobile을 넣고 swipe 함수가 동작 확인
+{: .lead}
 <!–-break-–>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

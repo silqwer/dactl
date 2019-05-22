@@ -9,6 +9,7 @@ published: true
 
 ---
 ## 하이브리드 웹 앱 문제풀이, 패스빌
+{: .lead}
 <!–-break-–>
 
 <div class="swiper-container">

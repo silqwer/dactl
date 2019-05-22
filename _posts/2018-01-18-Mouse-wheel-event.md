@@ -10,6 +10,7 @@ published: true
 
 ---
 ## 마우스 휠 이벤트 입력 테스트
+{: .lead}
 <!–-break-–>
 
 <script>
