@@ -23,4 +23,4 @@ published: true
 <img src='/../assets/resources/img/aframe/ipd/h4.jpg' alt='camera4'>
 
 ## 결과
-카메라가 없는 곳 까지 화면으로 인식해서 VR MODE가 실행된다. 
+카메라가 없는 곳 까지 화면으로 인식해서 VR MODE가 실행된다.
