@@ -17,10 +17,10 @@ published: true
 
 ## 전면 카메라 1개
 <img src='/../assets/resources/img/aframe/hole/h1.jpg' alt='camera1'>
-<img src='/../assets/resources/img/aframe/ipd/h3.jpg' alt='camera2'>
+<img src='/../assets/resources/img/aframe/hole/h3.jpg' alt='camera2'>
 ## 전면 카메라 2개
 <img src='/../assets/resources/img/aframe/hole/h2.jpg' alt='camera3'>
-<img src='/../assets/resources/img/aframe/ipd/h4.jpg' alt='camera4'>
+<img src='/../assets/resources/img/aframe/hole/h4.jpg' alt='camera4'>
 
 ## 결과
 카메라가 없는 곳 까지 화면으로 인식해서 VR MODE가 실행된다.
