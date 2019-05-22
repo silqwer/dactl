@@ -8,7 +8,11 @@ overlay: red
 published: true
 
 ---
-Instascan.js 구동시켜 보기 
+## Instascan.js 구동 
+{: .lead}
+- 켜기 버튼을 누르면 *스마트폰 후면부 카메라*가 켜진다.
+- 끄기 버튼을 누르면 *스마트폰 후면부 카메라*가 꺼진다.
+- 읽기 버튼을 무르면 *QRCODE*정보를 읽어온다. 
 <!–-break-–>
 
 <iframe id="instascanIframe" width="100%" height="500px;" src="/../assets/resources/html/instascan/instascan.html"></iframe>
