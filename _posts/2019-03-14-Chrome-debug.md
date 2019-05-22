@@ -10,7 +10,7 @@ overlay: green
 published: true
 
 ---
-## 스마트폰에선 디버깅을 어떻게하지?
+## 스마트 폰에선 디버깅을 어떻게하지?
 {: .lead}
 로컬에서 작업하고 오류가 나면 크롬 개발자 도구를 사용하면 되는데 폰으로 돌렸을 때 어떻게 확인해야하는걸까? 혹시나 하고 구글에 **스마트폰 크롬 디버깅**이라고 검색을 했다. (하늘아래 새로운건 없다.)
 <!–-break-–>
@@ -24,13 +24,13 @@ published: true
 - PC 크롬에서 chrome://inspect 접속
 - 탭 정보에서 inspect 선택 > 개발자 모드 활성화 
 
-## 개발바 모드 켜기
+## 개발자 모드 켜기
 <img src='/../assets/resources/img/aframe/chrome/p1.jpg' alt='dev'>
-**스마트폰 설정 > 휴대전화 정보 > 소프트웨어 정보**에서 빌드번호를 연속적으로 터치한다. 그러면 **개발 설정완료 4단계, 3단계, 2단계, 1단계 전입니다.** <img src='/../assets/resources/img/aframe/chrome/p2.jpg' alt='stereo'> 메시지가 뜨고 계속 누르면 개발자 모드가 켜진다.
+**스마트폰 설정 > 휴대전화 정보 > 소프트웨어 정보**에서 빌드번호를 연속적으로 터치한다. 그러면 **개발 설정완료 4단계, 3단계, 2단계, 1단계 전입니다.** 메시지가 뜨고 계속 누르면 개발자 모드가 켜진다. <img src='/../assets/resources/img/aframe/chrome/p2.jpg' alt='stereo'> 이후 스마트폰 설정으로 돌아가면 개발자모드 메뉴를 확인 할 수 있다.
 
 ## USB 디버깅
-<img src='/../assets/resources/img/aframe/chrome/msg..jpg' alt='msg'>
-**스마트폰 설정 > 개발자 옵션**으로 들어가서 화면을 내리다 보면 디버깅 설정 부분이 보인다. 여기서 **USB 디버깅**을 켠다. 그리고 컴퓨터와 스마트폰을 연결하고 **휴대전화 데이터에 접근 허용** 메세지가 뜨면 **허용** 설정을 한다.
+<img src='/../assets/resources/img/aframe/chrome/msg.jpg' alt='msg'>
+**스마트폰 설정 > 개발자 옵션**으로 들어가서 화면을 내리다 보면 디버깅 설정 부분이 보인다. 여기서 **USB 디버깅**을 켠다. 그리고 컴퓨터와 스마트폰을 연결하고 **휴대전화 데이터에 접근 허용** 메세지가 뜨면 **허용** 선택한다.
 
 ## inspect
 <img src='/../assets/resources/img/aframe/chrome/p3.png' alt='usb'>
