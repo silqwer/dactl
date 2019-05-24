@@ -11,12 +11,13 @@ published: true
 
 ---
 ## 360Image에 3D Object
-360Image에 3D Object를 불러와 상호작용하는 예제는 있다. 
+360Image에 3D Object를 불러와 상호작용하는 예제는 있다.
 {: .lead}
 POI(point of interest)를 선택하면 객체의 정보를 불러오고 객체의 색상을 변경하는 예제
+<!–-break-–>
 <img src='/../assets/resources/img/panolens/object/o2.gif' alt='object2'>
 소스를 분석해도 POI를 특별하게 설정해주는 부분이 없어서 나도 그냥 오브젝트를 불러오고 원하는 부분에 POI를 위치 시켜보았다. 하지만...
-<!–-break-–>
+
 
 ## POI 위치
 <img src='/../assets/resources/img/panolens/object/o3.gif' alt='stereo'>
