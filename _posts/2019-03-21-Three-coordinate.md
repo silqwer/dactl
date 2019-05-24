@@ -3,7 +3,7 @@ layout: post
 title:  "Three.js, CoordinateSystem"
 tags:
   - three.js
-hero: /../assets/resources/img/threejs/coor/c1.jpg
+hero: /../assets/resources/img/ar/coor/c1.jpg
 overlay: green
 published: true
 
@@ -14,4 +14,4 @@ published: true
 <!–-break-–>
 
 ## Three.js 좌표계
-<img src='/../assets/resources/img/ar/move/c1.jpg' alt='CoordinateSystem'>
+<img src='/../assets/resources/img/ar/coor/c1.jpg' alt='CoordinateSystem'>
