@@ -7,7 +7,7 @@ url                          : "https://silqwer.github.io" # the base hostname &
 blog:
   title                      : silqwer
   description                  : >
-                               this should contain a proper description
+                               자바 웹 개발자 김용호입니다.
 
 # Layout configuration
   logo_path                  : "assets/img/happy-cloud.svg" # path to logo file
