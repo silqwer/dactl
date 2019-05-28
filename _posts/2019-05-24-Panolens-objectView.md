@@ -6,7 +6,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/panolens/object/o1.png
-overlay: purple
+overlay: "orange" 
 published: true
 
 ---
