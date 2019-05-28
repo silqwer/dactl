@@ -17,9 +17,10 @@ published: true
 <!–-break-–>
 
 ## Debugging in Chrome
-가장먼저 컴퓨터랑 스마트폰을 연결해서 디버깅(chrome inspect)을 해봤다. 쭉~ 따라서 구동을 해보니 뚜둥! 다음과 같은 오류, 경고문이 떳다. 
 The `deviceorientation` event is deprecated on insecure origins and will be removed in M76, around July 2019. Event handlers can still be registered but are no longer invoked since M74, around April 2019. See https://www.chromestatus.com/feature/5468407470227456 for more details.
 {: .notice}
+가장먼저 컴퓨터랑 스마트폰을 연결해서 디버깅(chrome inspect)을 해보니 위와 같은 오류, 경고문이 떳다. 
+
 7월 M76버전 부터는 deviceorientation를 제거되고 M74버전 이후에 더이상 호출되지 않는다는 말이다. 정말 크리티컬한 일이다. 하지만 관련된 천재들이 해결해 주리라...
 
 ## http? https.
