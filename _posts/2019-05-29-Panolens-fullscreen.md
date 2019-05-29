@@ -34,6 +34,7 @@ published: true
 - msRequestFullscreen: 익스플로러
 - mozRequestFullScreen: 파이어폭스
 - webkitRequestFullscreen: 크롬, 엣지
+
 위와 같이 브라우저에서 반응을 한다. 
 
 ## 크기 조절하기
