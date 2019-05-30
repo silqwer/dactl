@@ -27,7 +27,7 @@ deviceorientation 이벤트는 7월 M76버전 부터 불완전한 origins에 지
 예전에 ar.js를 가지고 놀 때 브라우저에서 스마트폰 카메라에 접근하기 위해서 http로는 접근을 할 수 없었다. (보안상의 이유로) https를 통해서 접근해야지 ar.js 라이브러리가 동작했다. 개발서버의 URL을 보니 http에서 동작하고 있었는데 혹시나 이것과 관련된 부분도 있지 않을까? 검색을 했다.
 <img src='/../assets/resources/img/panolens/control/c1.png' alt='c1'>pnolens.js에서 일어난 문제는 아니었지만 다른 누군가도 나와 같은 문제에 직면하고 굉장히 크리티컬한 문제라고 인식하고 있었다. 답변자는 https에서 시도해보라고 이야기 했다.
 
-## Insecure origins == http
+## Insecure origins == http?
 Insecure origins이 http를 의미하는 것인가? 혹시나 하고 three.js github issues 에서 https를 검색해봤다. 역시나 관련된 이슈가 있었다. 마지막 문단을 읽어보니 https로 교체를해야 한다며 <a rel="nofollow" href="https://goo.gl/rStTGz">https://goo.gl/rStTGz</a> 로 링크를 하나 달아놓았다. 
 <img src='/../assets/resources/img/panolens/control/ssl.png' alt='ssl'>
 
@@ -41,6 +41,7 @@ https에서만 접근 가능한 기능은 아래 6가지로 가이드 하고 있
 - getUserMedia
 - AppCache
 - Notifications
+
 로컬호스트는 안전하다고 간주되어 해당 기능을 테스트 할 수 있었던 것이다. 
 
 ## test
