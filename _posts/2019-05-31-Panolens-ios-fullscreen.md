@@ -16,7 +16,7 @@ published: true
 width 값이 설정이 잘못되어 있어서 전체버튼의 영역이 화면 밖으로 나갔겟구나 생각을 했다. 하지만...
 <!–-break-–>
 해당 css를 보니 width:100%, css를 50%으로 수정(아이폰으로 확인하기 위해서는 개발서버 빌드를 해야한다...)하고 확인하니
-<img src='/../assets/resources/img/panolens/control/c4.gif' alt='c4'>
+<img src='/../assets/resources/img/panolens/control/c4.jpg' alt='c4'>
 아예 버튼이 생성이 되지 않은 것 같았다. 
 
 ## 전체화면 버튼 생성
