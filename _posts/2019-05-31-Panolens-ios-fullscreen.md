@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Panolens control button"
+title:  "Panolens ios fullscreen"
 tags:
   - panolens
   - WebVR
