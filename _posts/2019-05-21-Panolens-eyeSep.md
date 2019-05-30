@@ -6,7 +6,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/panolens/eyeSep/modeUi.png
-overlay: orange
+overlay: purple
 published: true
 
 ---
