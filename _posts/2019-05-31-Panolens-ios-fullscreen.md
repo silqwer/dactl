@@ -24,9 +24,10 @@ width 값이 설정이 잘못되어 있어서 전체버튼의 영역이 화면 �
 IOS Chrome에서 전체화면을 지원하지 않는 것인가?
 
 ## IOS Chrome
-<img src='/../assets/resources/img/panolens/control/notSupportIos.png' alt='c5'>
+<a href='https://stackoverflow.com/questions/43024394/ios10-fullscreen-safari-javascript'><img src='/../assets/resources/img/panolens/control/notSupportIos.png' alt='c5'></a>
 ios10 이상에서 사파리나 크롬에서 전체화면을 지원하지 않는다는 stackoverflow글을 발견!
-<img src='/../assets/resources/img/panolens/control/notSupportIos.png' alt='c5'>
+<a href='https://stackoverflow.com/questions/20602467/fullscreen-api-not-working-on-chrome-ios'>
+<img src='/../assets/resources/img/panolens/control/notSupportIos.png' alt='c5'></a>
 ios용 크롬은 크롬이 아니라는? 렌더링 및 실행 엔진이 크롬이 아니라는 글도 발견했다. panolens를 통해서 아이폰에서 전체화면버튼은 생성이 안되는게 맞다. 
 
 
