@@ -2,31 +2,23 @@
 layout: post
 title:  "Seoul vrar expo 2019"
 tags:
-  - 
-hero: /../assets/resources/img/panolens/control/c4.jpg
-overlay: purple
+  - Expo
+hero: /../assets/resources/img/expo/2019/vrar/title.jpg
+overlay: orange
 published: true
 
 ---
-## 아이폰에서 전체화면 버튼 없음 
-혼자서 테스트 할때는 못보던 부분 애초에 아이폰은 서비스 대상이 아니었는데...확인해보니 정말 컨트롤 버튼만 있었다. 
+## Seoul vrar expo 2019
+현재 개발하고 있는 플랫폼에 참고가 될만한 콘텐츠가 있을까 하고 코엑스를 찾아갔다. 대부분이 게임이겠지만...
 {: .lead}
-width 값이 설정이 잘못되어 있어서 전체버튼의 영역이 화면 밖으로 나갔겟구나 생각을 했다. 하지만...
+코엑스에 도착해서 입장부터 쉽지 않았다. 작년에는 사전신청을 하면 등록을 하고 바로 들어갈 수 있었는데 사람이 많아서 그런건지 
+사전 신청한 사람만 줄을 새웠는데 30분 정도 줄서고 입장한 것 같다. 
 <!–-break-–>
-해당 css를 보니 width:100%, css를 50%으로 수정(아이폰으로 확인하기 위해서는 개발서버 빌드를 해야한다...)하고 확인하니
-<img src='/../assets/resources/img/panolens/control/c4.jpg' alt='c4'>
-아예 버튼이 생성이 되지 않은 것 같았다. 
+<img src='/../assets/resources/img/expo/2019/vrar/etc/e1.jpg' alt='e1'>
+입장해서 게임부스는 일단 다 넘어갔다. 대부분의 크고 웅장한 부스는 모두 게임이 아니면 놀이기구와 같은 콘텐츠였다. 
 
-## 전체화면 버튼 생성
-<div class="colorscripter-code" style="color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important; overflow:auto"><table class="colorscripter-code-table" style="margin:0; padding:0; border:none; background-color:#272727; border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px; border-right:2px solid #4f4f4f"><div style="margin:0; padding:0; word-break:normal; text-align:right; color:#aaa; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div><div style="line-height:130%">10</div><div style="line-height:130%">11</div><div style="line-height:130%">12</div><div style="line-height:130%">13</div><div style="line-height:130%">14</div><div style="line-height:130%">15</div><div style="line-height:130%">16</div><div style="line-height:130%">17</div><div style="line-height:130%">18</div><div style="line-height:130%">19</div><div style="line-height:130%">20</div><div style="line-height:130%">21</div><div style="line-height:130%">22</div></div></td><td style="padding:6px 0"><div style="margin:0; padding:0; color:#f0f0f0; font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">/**</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">&nbsp;*&nbsp;Create&nbsp;Fullscreen&nbsp;button</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">&nbsp;*&nbsp;@return&nbsp;{HTMLSpanElement}&nbsp;-&nbsp;The&nbsp;dom&nbsp;element&nbsp;icon&nbsp;for&nbsp;fullscreen</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">&nbsp;*&nbsp;@fires&nbsp;PANOLENS.Widget#panolens-viewer-handler</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">&nbsp;*/</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">PANOLENS.Widget.<span style="color:#4be6fa">prototype</span>.createFullscreenButton&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ff3399">function</span>&nbsp;()&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">var</span>&nbsp;scope&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;this,&nbsp;item,&nbsp;isFullscreen&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#c10aff">false</span>,&nbsp;tapSkipped&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#c10aff">true</span>,&nbsp;stylesheetId;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;stylesheetId&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'panolens-style-addon'</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#999999">//&nbsp;Don't&nbsp;create&nbsp;button&nbsp;if&nbsp;no&nbsp;support</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">if</span>&nbsp;(&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">!</span><span style="color:#4be6fa">document</span>.fullscreenEnabled&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">&amp;</span><span style="color:#0086b3"></span><span style="color:#ff3399">&amp;</span>&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">!</span><span style="color:#4be6fa">document</span>.webkitFullscreenEnabled&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">&amp;</span><span style="color:#0086b3"></span><span style="color:#ff3399">&amp;</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">!</span><span style="color:#4be6fa">document</span>.mozFullScreenEnabled&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">&amp;</span><span style="color:#0086b3"></span><span style="color:#ff3399">&amp;</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">!</span><span style="color:#4be6fa">document</span>.msFullscreenEnabled&nbsp;)&nbsp;{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4be6fa">alert</span>(<span style="color:#ffd500">'not&nbsp;support&nbsp;fullscreen'</span>);</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff3399">return</span>;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;}</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">...</div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div></div><div style="text-align:right; margin-top:-13px; margin-right:5px; font-size:9px; font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4f; text-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom; padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none; color:white"><span style="font-size:9px; word-break:normal; background-color:#4f4f4f; color:white; border-radius:10px; padding:1px">cs</span></a></td></tr></table></div>
-IOS Chrome에서 전체화면을 지원하지 않는 것인가?
 
-## IOS Chrome
-<a href='https://stackoverflow.com/questions/43024394/ios10-fullscreen-safari-javascript'><img src='/../assets/resources/img/panolens/control/notSupportIos.png' alt='c5'></a>
-ios10 이상에서 사파리나 크롬에서 전체화면을 지원하지 않는다는 stackoverflow글을 발견!
-<a href='https://stackoverflow.com/questions/20602467/fullscreen-api-not-working-on-chrome-ios'>
-<img src='/../assets/resources/img/panolens/control/notSupportIos2.png' alt='c6'></a>
-ios용 크롬은 크롬이 아니라는? 렌더링 및 실행 엔진이 크롬이 아니라는 글도 발견했다. panolens를 통해서 아이폰에서 전체화면버튼은 생성이 안되는게 맞다. 
+
 
 
 
