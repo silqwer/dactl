@@ -15,7 +15,17 @@ published: true
 사전 신청한 사람만 줄을 새웠는데 30분 정도 줄서고 입장한 것 같다. 
 <!–-break-–>
 <img src='/../assets/resources/img/expo/2019/vrar/etc/e1.jpg' alt='e1'>
-입장해서 게임부스는 일단 다 넘어갔다. 대부분의 크고 웅장한 부스는 모두 게임이 아니면 놀이기구와 같은 콘텐츠였다. 
+대부분의 크고 웅장한 부스는 모두 게임이 아니면 놀이기구와 같은 콘텐츠였다. 이런 부스는 다 넘어갔다. 그 중에 몬스터 VR 부스는 가장 컷던것 같다. 
+<img src='/../assets/resources/img/expo/2019/vrar/etc/e2.jpeg' alt='e2'>
+거북선 위에서 콘텐츠를 즐기고 있는 사람들은 하나같이 활을 쏘고 있었다. 그 모습을 보니 아마도 외군을 물리치는 컨텐츠겠구나 짐작할 수 있었다.
+<img src='/../assets/resources/img/expo/2019/vrar/etc/e3.jpeg' alt='e3'>
+
+## look360 
+가장 먼저 눈에 띈 업체이다. krpano를 이용해 360vr 콘텐츠를 만들어주는 회사이다. 부스에서 설명을 듣는데 견적을 산출하는 방법까지 설명해줘서 기억에 남는다.
+- POI 하나당 5만원
+- 출장비가 서울 10만원, 지방 15만원
+그리고 VR스토리 모드 라는 이름으로 나레이션이 지원되는 서비스도 소개해주었다.
+<iframe width="100%" height="442" src="https://www.youtube.com/embed/TQt7sEXKI5c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
