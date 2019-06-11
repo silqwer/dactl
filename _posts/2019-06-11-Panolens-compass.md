@@ -6,7 +6,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/panolens/compass/c1.jpg
-overlay: orange
+overlay: red
 published: true
 
 ---
