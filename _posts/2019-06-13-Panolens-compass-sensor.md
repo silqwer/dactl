@@ -10,7 +10,7 @@ overlay: blue
 published: true
 
 ---
-## Compass
+## Compass sensor
 지난번에 구현한 compass 컴퓨터에서는 잘 작동하는데 Control을 Sensor로 설정을 하니까 역시나 동작하지 않았다.
 {: .lead}
 Sensor 선택 시 어떻게 동작을 하는지 구조부터 파악 하는 것이 먼저였다.
