@@ -40,3 +40,6 @@ published: true
 - devbit.p12 를 pkcs12 으로 저장
 
 서버를 다시 시작하니 인증서가 갱신되어서 적용되었다. 
+
+## 적용 테스트 주소
+<a href='https://www.whynopadlock.com/results/f13cc1d9-f01e-4578-af14-c630f3ce065f'>https://www.whynopadlock.com/results/f13cc1d9-f01e-4578-af14-c630f3ce065f</a>
