@@ -29,7 +29,6 @@ It also needs both :before and :after pseudoclasses to work, that's the only way
 {% if post.overlay == "green" %}{% assign overlay = "rgba(100,255,0," %}{% endif %}
 {% if post.overlay == "purple" %}{% assign overlay = "rgba(100,0,255," %}{% endif %}
 {% if post.overlay == "orange" %}{% assign overlay = "rgba(255,100,0," %}{% endif %}
-{% if post.overlay == "random" %}{% assign overlay = "rgba(post.r, post.g, post.b," %}{% endif %}
 
 {% else %}
 {% assign overlay = "rgba(0,0,0,.8)" %}
