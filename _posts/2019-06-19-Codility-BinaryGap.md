@@ -4,7 +4,7 @@ title:  "BinaryGap"
 tags:
   - Codility
 hero: /../assets/resources/img/codility/binaryGap/b1.png
-overlay: blue
+overlay: random
 published: true
 
 ---
