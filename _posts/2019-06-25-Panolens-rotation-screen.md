@@ -6,7 +6,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/panolens/fitToScreen/f1.png
-overlay: blue
+overlay: red
 published: true
 
 ---
