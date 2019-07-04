@@ -6,7 +6,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/panolens/sensor/s1.png
-overlay: red
+overlay: orange
 published: true
 
 ---
