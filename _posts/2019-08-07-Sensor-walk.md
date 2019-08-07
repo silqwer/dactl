@@ -18,4 +18,4 @@ published: true
 
 ## 적용
 <img src='/../assets/resources/img/panolens/walk/w2.gif' alt='w2'>
-<img src='/../assets/resources/img/panolens/walk/w3.gif' alt='w3'>
+
