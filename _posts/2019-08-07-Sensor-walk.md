@@ -5,7 +5,7 @@ tags:
   - panolens
   - WebVR
   - 360VR
-hero: /../assets/resources/img/walk/w1.jpg
+hero: /../assets/resources/img/panolens/walk/w1.jpg
 overlay: green
 published: true
 
@@ -17,5 +17,5 @@ published: true
 <!–-break-–>
 
 ## 적용
-<img src='/../assets/resources/img/walk/w2.gif' alt='w2'>
-<img src='/../assets/resources/img/walk/w3.gif' alt='w3'>
+<img src='/../assets/resources/img/panolens/walk/w2.gif' alt='w2'>
+<img src='/../assets/resources/img/panolens/walk/w3.gif' alt='w3'>
