@@ -6,7 +6,7 @@ tags:
   - WebVR
   - 360VR
 hero: /../assets/resources/img/panolens/walk/w1.jpg
-overlay: green
+overlay: red
 published: true
 
 ---
