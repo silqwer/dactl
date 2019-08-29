@@ -20,7 +20,8 @@ published: true
 
 ## Early Bird Developer
 
-5년 차 웹 개발자로 서버사이드 개발 및 프론트엔트 개발에서 다양한 경험이 있습니다. 웹에이전시에서 개발자의 첫걸음을 시작해 현재는 교육회사의 연구소에서 플랫폼개발은 담당하고 있습니다. 
+5년 차 웹 개발자로 서버사이드 개발 및 프론트엔트 개발에서 다양한 경험이 있습니다. 
+웹에이전시에서 개발자의 첫걸음을 시작해 현재는 교육회사의 연구소에서 플랫폼개발을 담당하고 있습니다. 
 
 Java, Spring Framework, JavaScript, Git, Svn, MySQL, Oracle, Node.js, Maven, Jenkins, three.js, panolens.js, ar.js, aframe.js  등의 기술을 사용해서 서비스를 개발하고 및 유지보수한 경험이 있습니다. 
 항상 더 좋은 코드를 짜기 위해 고민하며 개발 문화를 만들고 정착시키려 노력하고 있습니다. 
